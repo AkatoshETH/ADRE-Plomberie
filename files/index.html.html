@@ -1,0 +1,1631 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ============================================================
+    🔧 SEO — Modifier ici le nom et la description
+  ============================================================ -->
+  <title>Plombier Talence | TPT Plomberie 24h/24 - Agglomeration Bordelaise</title>
+  <meta name="description" content="Plombier Talence 24h/24 : depannage, fuite, chauffe-eau, climatisation. TPT Plomberie intervient sur toute l'Agglomeration Bordelaise. 81 avis Google, note 5/5. Appelez le 07 87 57 34 24." />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "TPT Plomberie",
+    "image": "https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1600&q=80",
+    "telephone": "+33 7 87 57 34 24",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Talence",
+      "postalCode": "33400",
+      "addressLocality": "Talence",
+      "addressRegion": "Nouvelle-Aquitaine",
+      "addressCountry": "FR"
+    },
+    "areaServed": "Agglomeration Bordelaise",
+    "aggregateRating": {
+      "@type": "AggregateRating",
+      "ratingValue": "5",
+      "bestRating": "5",
+      "ratingCount": "81"
+    }
+  }
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800&family=Nunito+Sans:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/framer-motion@11.11.17/dist/framer-motion.js"></script>
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    /* ============================================================
+      🎨 COULEURS — Palette "eau & métal" pour plombier/clim
+    ============================================================ */
+    :root {
+      --c-navy:     #0A192F;   /* bleu nuit royal */
+      --c-blue:     #17345e;   /* bleu principal */
+      --c-sky:      #365f92;   /* bleu secondaire */
+      --c-gold:     #C5A059;   /* or brosse */
+      --c-water:    #e8f4fd;   /* bleu très clair */
+      --c-orange:   #C5A059;   /* alias accent historique */
+      --c-bg:       #f5f8fc;
+      --c-white:    #ffffff;
+      --c-text:     #1a2332;
+      --c-muted:    #5a6a7e;
+      --c-border:   #d4e4f0;
+      --c-surface:  #edf4fb;
+      --font-display: 'Barlow Condensed', sans-serif;
+      --font-body:    'Nunito Sans', sans-serif;
+      --shadow-sm:  0 2px 12px rgba(10,25,47,.08);
+      --shadow-md:  0 8px 32px rgba(10,25,47,.12);
+      --shadow-lg:  0 20px 60px rgba(10,25,47,.16);
+      --radius:     14px;
+      --ease:       cubic-bezier(0.65, 0, 0.35, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      background: var(--c-bg);
+      color: var(--c-text);
+      font-family: var(--font-body);
+      font-size: 16px;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: var(--c-water); }
+    ::-webkit-scrollbar-thumb { background: var(--c-sky); border-radius: 2px; }
+
+    .container { max-width: 1160px; margin: 0 auto; padding: 0 28px; }
+
+    /* ── Reveal animations ── */
+    .reveal {
+      opacity: 0; transform: translateY(36px);
+      transition: opacity .75s var(--ease), transform .75s var(--ease);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-left {
+      opacity: 0; transform: translateX(-50px);
+      transition: opacity .8s var(--ease), transform .8s var(--ease);
+    }
+    .reveal-left.visible { opacity: 1; transform: translateX(0); }
+    .reveal-right {
+      opacity: 0; transform: translateX(50px);
+      transition: opacity .8s var(--ease), transform .8s var(--ease);
+    }
+    .reveal-right.visible { opacity: 1; transform: translateX(0); }
+    .stagger > * {
+      opacity: 0; transform: translateY(28px);
+      transition: opacity .55s var(--ease), transform .55s var(--ease);
+    }
+    .stagger.visible > *:nth-child(1){opacity:1;transform:none;transition-delay:.04s}
+    .stagger.visible > *:nth-child(2){opacity:1;transform:none;transition-delay:.12s}
+    .stagger.visible > *:nth-child(3){opacity:1;transform:none;transition-delay:.20s}
+    .stagger.visible > *:nth-child(4){opacity:1;transform:none;transition-delay:.28s}
+    .stagger.visible > *:nth-child(5){opacity:1;transform:none;transition-delay:.36s}
+    .stagger.visible > *:nth-child(6){opacity:1;transform:none;transition-delay:.44s}
+
+    /* ================================================================
+      NAV
+    ================================================================ */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      padding: 18px 0;
+      background: rgba(255,255,255,0);
+      transition: background .4s, padding .4s, box-shadow .4s;
+    }
+    nav.scrolled {
+      background: rgba(255,255,255,.97);
+      backdrop-filter: blur(16px);
+      padding: 12px 0;
+      box-shadow: var(--shadow-sm);
+    }
+    .nav-inner { display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+
+    /* ============================================================
+      🏢 LOGO — Remplacez par <img src="logo.svg" alt="TPT" style="height:44px;" />
+    ============================================================ -->*/
+    .logo {
+      display: flex; align-items: center; gap: 10px;
+      font-family: var(--font-display);
+      font-size: 24px; font-weight: 800; letter-spacing: .04em;
+      color: var(--c-navy);
+    }
+    .logo-mark {
+      width: 42px; height: 42px;
+      background: linear-gradient(135deg, var(--c-blue), var(--c-sky));
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 4px 14px rgba(21,101,168,.35);
+      transition: transform .25s;
+    }
+    .logo:hover .logo-mark { transform: rotate(-6deg) scale(1.06); }
+    .logo-mark svg { width: 22px; height: 22px; }
+    .logo-text-top { line-height: 1; color: var(--c-navy); }
+    .logo-text-sub { font-size: 12px; font-weight: 600; letter-spacing: .1em; color: var(--c-sky); font-family: var(--font-body); text-transform: uppercase; }
+
+    .nav-links { display: flex; list-style: none; gap: 32px; }
+    .nav-links a {
+      font-size: 14px; font-weight: 600; letter-spacing: .04em;
+      color: var(--c-muted); position: relative;
+      transition: color .25s;
+    }
+    nav.scrolled .nav-links a { color: var(--c-muted); }
+    nav:not(.scrolled) .nav-links a { color: rgba(255,255,255,.8); }
+    .nav-links a:hover { color: var(--c-sky) !important; }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -3px; left: 0;
+      width: 0; height: 2px; background: var(--c-sky); border-radius: 1px;
+      transition: width .3s var(--ease);
+    }
+    .nav-links a:hover::after { width: 100%; }
+
+    .nav-phone {
+      display: flex; align-items: center; gap: 8px;
+      background: var(--c-orange);
+      color: #fff !important;
+      font-size: 15px; font-weight: 700;
+      padding: 10px 20px; border-radius: 100px;
+      transition: transform .2s, box-shadow .2s;
+      white-space: nowrap;
+      box-shadow: 0 4px 16px rgba(244,124,32,.35);
+    }
+    .nav-phone:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(244,124,32,.45); }
+    .nav-phone::after { display: none !important; }
+
+    .burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+    .burger span { display: block; width: 26px; height: 2px; background: var(--c-navy); transition: .3s; border-radius: 2px; }
+    nav:not(.scrolled) .burger span { background: #fff; }
+
+    /* ================================================================
+      HERO
+    ================================================================ */
+    #hero {
+      min-height: 100svh;
+      position: relative;
+      display: flex; align-items: center;
+      overflow: hidden;
+    }
+
+    /* ============================================================
+      📸 PHOTO HERO — Remplacez l'URL par votre photo
+      Ex: url('images/hero.jpg')
+    ============================================================ -->*/
+    .hero-bg-img {
+      position: absolute; inset: 0;
+      background-image: url('https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1600&q=80');
+      background-size: cover; background-position: center;
+      transform: scale(1.06);
+      animation: heroIn 10s ease-out forwards;
+    }
+    @keyframes heroIn { to { transform: scale(1); } }
+
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        100deg,
+        rgba(13,33,55,.88) 0%,
+        rgba(13,33,55,.65) 55%,
+        rgba(21,101,168,.25) 100%
+      );
+    }
+
+    /* Diagonal shape */
+    .hero-shape {
+      position: absolute; bottom: -2px; left: 0; right: 0; z-index: 1;
+    }
+    .hero-shape svg { display: block; width: 100%; }
+    .hero-wave {
+      position: absolute; left: 0; right: 0; bottom: 0; z-index: 2;
+      pointer-events: auto;
+    }
+    .hero-wave svg { display: block; width: 100%; height: 86px; }
+    .hero-wave path {
+      fill: rgba(197,160,89,.3);
+      transition: d .2s var(--ease);
+      filter: drop-shadow(0 -4px 10px rgba(10,25,47,.2));
+    }
+
+    /* Animated water ripple BG */
+    .hero-ripple {
+      position: absolute; right: 8%; top: 50%; transform: translateY(-50%);
+      width: 500px; height: 500px; border-radius: 50%;
+      border: 1px solid rgba(46,155,214,.12);
+      animation: ripple 6s ease-in-out infinite;
+      pointer-events: none;
+    }
+    .hero-ripple::before {
+      content: ''; position: absolute; inset: 40px;
+      border-radius: 50%; border: 1px solid rgba(46,155,214,.2);
+      animation: ripple 6s ease-in-out infinite .8s;
+    }
+    .hero-ripple::after {
+      content: ''; position: absolute; inset: 100px;
+      border-radius: 50%; border: 1px solid rgba(46,155,214,.3);
+      animation: ripple 6s ease-in-out infinite 1.6s;
+    }
+    @keyframes ripple { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.05);opacity:.6} }
+
+    .hero-content {
+      position: relative; z-index: 2;
+      padding: 140px 0 120px;
+    }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(46,155,214,.2);
+      border: 1px solid rgba(46,155,214,.4);
+      backdrop-filter: blur(8px);
+      color: #7dd3f5; font-size: 13px; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      padding: 7px 16px; border-radius: 100px; margin-bottom: 28px;
+      opacity: 0; animation: slideUp .7s .3s forwards;
+    }
+    .hero-badge-star { color: #fbbf24; font-size: 14px; }
+
+    .hero-title {
+      font-family: var(--font-display);
+      font-size: clamp(54px, 8.5vw, 118px);
+      font-weight: 800; line-height: .93;
+      letter-spacing: .01em;
+      color: #fff; margin-bottom: 28px;
+      opacity: 0; animation: slideUp .8s .5s forwards;
+    }
+    .hero-title .accent { color: var(--c-sky); display: block; }
+    .hero-title .sub-accent { color: var(--c-orange); }
+
+    .hero-desc {
+      font-size: 18px; color: rgba(255,255,255,.75);
+      max-width: 500px; line-height: 1.75; margin-bottom: 44px;
+      opacity: 0; animation: slideUp .8s .7s forwards;
+    }
+
+    .hero-actions {
+      display: flex; flex-wrap: wrap; gap: 14px;
+      opacity: 0; animation: slideUp .8s .9s forwards;
+    }
+
+    @keyframes slideUp {
+      from { opacity:0; transform: translateY(28px); }
+      to   { opacity:1; transform: translateY(0); }
+    }
+
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: linear-gradient(135deg, #b08944 0%, var(--c-gold) 100%);
+      color: #fff;
+      font-weight: 700; font-size: 16px;
+      padding: 16px 32px; border-radius: 100px;
+      box-shadow: 0 6px 24px rgba(197,160,89,.34);
+      transition: transform .22s, box-shadow .22s;
+      position: relative; overflow: hidden;
+    }
+    .btn-primary::before {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(255,255,255,.18);
+      transform: translateX(-100%);
+      transition: transform .4s var(--ease);
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 36px rgba(197,160,89,.46); }
+    .btn-primary:hover::before { transform: translateX(0); }
+
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 10px;
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.3);
+      backdrop-filter: blur(8px);
+      color: #fff; font-weight: 600; font-size: 16px;
+      padding: 16px 32px; border-radius: 100px;
+      transition: background .25s, border-color .25s;
+    }
+    .btn-secondary:hover { background: rgba(255,255,255,.2); border-color: rgba(255,255,255,.5); }
+
+    /* Stats floating cards */
+    .hero-stats {
+      display: flex; gap: 14px; flex-wrap: wrap;
+      margin-top: 56px;
+      opacity: 0; animation: slideUp .8s 1.1s forwards;
+    }
+    .hero-stat {
+      background: rgba(255,255,255,.1);
+      border: 1px solid rgba(255,255,255,.15);
+      backdrop-filter: blur(12px);
+      border-radius: 14px; padding: 16px 22px;
+      display: flex; align-items: center; gap: 12px;
+    }
+    .hero-stat-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: var(--c-sky);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      color: #fff;
+    }
+    .hero-stat-icon svg { width: 20px; height: 20px; }
+    .hero-stat-num { font-family: var(--font-display); font-size: 26px; font-weight: 700; color: #fff; line-height: 1; }
+    .hero-stat-label { font-size: 12px; color: rgba(255,255,255,.65); margin-top: 2px; }
+
+    /* ================================================================
+      BAND URGENCE
+    ================================================================ */
+    .urgent-band {
+      background: var(--c-orange);
+      padding: 0;
+      position: relative; z-index: 3;
+    }
+    .urgent-band-inner {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 16px 28px; gap: 24px; flex-wrap: wrap;
+    }
+    .urgent-left {
+      display: flex; align-items: center; gap: 14px;
+    }
+    .urgent-dot {
+      width: 10px; height: 10px; border-radius: 50%; background: #fff;
+      animation: blink 1.5s ease-in-out infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:.3} }
+    .urgent-text { font-size: 15px; font-weight: 700; color: #fff; }
+    .urgent-text span { opacity: .8; font-weight: 400; }
+    .urgent-phone {
+      font-family: var(--font-display); font-size: 28px; font-weight: 700;
+      color: #fff; letter-spacing: .06em;
+      display: flex; align-items: center; gap: 8px;
+      text-shadow: 0 2px 8px rgba(0,0,0,.15);
+    }
+
+    /* ================================================================
+      SECTION BASE
+    ================================================================ */
+    section { padding: 100px 0; }
+    .section-chip {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--c-water); border: 1px solid var(--c-border);
+      color: var(--c-blue); font-size: 12px; font-weight: 700;
+      letter-spacing: .1em; text-transform: uppercase;
+      padding: 5px 14px; border-radius: 100px; margin-bottom: 14px;
+    }
+    .section-chip-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--c-sky); }
+    .section-title {
+      font-family: var(--font-display);
+      font-size: clamp(38px, 4.5vw, 62px);
+      font-weight: 800; line-height: .95;
+      letter-spacing: .01em; margin-bottom: 16px;
+      color: var(--c-navy);
+    }
+    .section-desc { font-size: 17px; color: var(--c-muted); max-width: 520px; line-height: 1.75; }
+
+    /* ================================================================
+      SERVICES
+    ================================================================ */
+    #services { background: var(--c-white); }
+
+    .services-header {
+      display: flex; justify-content: space-between; align-items: flex-end;
+      margin-bottom: 60px; gap: 40px;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .svc-card {
+      background: var(--c-white);
+      border: 1.5px solid var(--c-border);
+      border-radius: 20px;
+      padding: 36px 28px;
+      position: relative; overflow: hidden;
+      transition: border-color .3s, box-shadow .3s, transform .35s var(--ease);
+      cursor: default;
+    }
+    .svc-card::before {
+      content: ''; position: absolute;
+      top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--c-blue), var(--c-sky));
+      transform: scaleX(0); transform-origin: left;
+      transition: transform .4s var(--ease);
+    }
+    .svc-card:hover { border-color: var(--c-sky); box-shadow: var(--shadow-md); transform: translateY(-4px); }
+    .svc-card:hover::before { transform: scaleX(1); }
+
+    .svc-card.urgent { border-color: rgba(197,160,89,.45); }
+    .svc-card.urgent::before { background: linear-gradient(90deg, #9b7a3d, var(--c-gold)); }
+    .svc-card.urgent:hover { border-color: var(--c-orange); }
+
+    .svc-icon-wrap {
+      width: 56px; height: 56px; border-radius: 14px;
+      background: var(--c-water);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 22px;
+      transition: background .3s, transform .3s;
+    }
+    .svc-card:hover .svc-icon-wrap { background: var(--c-blue); transform: scale(1.08) rotate(-4deg); }
+    .svc-icon-wrap svg { width: 26px; height: 26px; stroke: var(--c-blue); transition: stroke .3s; }
+    .svc-card:hover .svc-icon-wrap svg { stroke: #fff; }
+    .svc-card.urgent .svc-icon-wrap { background: rgba(244,124,32,.1); }
+    .svc-card.urgent .svc-icon-wrap svg { stroke: var(--c-orange); }
+    .svc-card.urgent:hover .svc-icon-wrap { background: var(--c-orange); }
+    .svc-card.urgent:hover .svc-icon-wrap svg { stroke: #fff; }
+
+    .svc-num { font-family: var(--font-display); font-size: 13px; font-weight: 700; letter-spacing: .12em; color: var(--c-sky); margin-bottom: 8px; }
+    .svc-title { font-family: var(--font-display); font-size: 22px; font-weight: 700; margin-bottom: 10px; color: var(--c-navy); }
+    .svc-desc { font-size: 14px; color: var(--c-muted); line-height: 1.7; }
+
+    .svc-tag {
+      display: inline-block; margin-top: 16px;
+      background: rgba(197,160,89,.14); color: #8a6a30;
+      font-size: 11px; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; padding: 4px 10px; border-radius: 6px;
+    }
+
+    /* ================================================================
+      À PROPOS
+    ================================================================ */
+    #about { background: var(--c-bg); }
+
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+
+    .about-img-stack { position: relative; height: 560px; }
+
+    /* ============================================================
+      📸 PHOTOS À PROPOS — Remplacez les URLs
+    ============================================================ -->*/
+    .about-img-a {
+      position: absolute; top: 0; left: 0; width: 72%; height: 78%;
+      border-radius: 20px; overflow: hidden;
+      background-image: url('https://images.unsplash.com/photo-1607400201889-565b1ee75f8e?w=700&q=80');
+      background-size: cover; background-position: center;
+      box-shadow: var(--shadow-lg);
+    }
+    .about-img-b {
+      position: absolute; bottom: 0; right: 0; width: 58%; height: 52%;
+      border-radius: 20px; overflow: hidden;
+      background-image: url('https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=500&q=80');
+      background-size: cover; background-position: center;
+      box-shadow: var(--shadow-lg);
+      border: 4px solid var(--c-bg);
+    }
+
+    /* Rating badge */
+    .about-rating {
+      position: absolute; top: 50%; left: 55%; transform: translate(-50%,-50%);
+      background: var(--c-white); border-radius: 16px;
+      padding: 18px 22px; text-align: center;
+      box-shadow: 0 16px 48px rgba(13,33,55,.18);
+      z-index: 2; min-width: 130px;
+      animation: floatBadge 4s ease-in-out infinite;
+    }
+    @keyframes floatBadge { 0%,100%{transform:translate(-50%,-50%) translateY(0)} 50%{transform:translate(-50%,-50%) translateY(-7px)} }
+    .rating-num { font-family: var(--font-display); font-size: 42px; font-weight: 800; color: var(--c-navy); line-height: 1; }
+    .rating-stars { display: flex; justify-content: center; gap: 2px; margin: 4px 0; }
+    .rating-star { width: 14px; height: 14px; background: #fbbf24; clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%); }
+    .rating-label { font-size: 11px; color: var(--c-muted); font-weight: 600; }
+
+    /* Zone badge */
+    .about-zone {
+      position: absolute; top: 20px; right: 0;
+      background: var(--c-blue);
+      color: #fff; border-radius: 12px;
+      padding: 12px 16px;
+      box-shadow: 0 8px 24px rgba(21,101,168,.35);
+      z-index: 3; font-size: 13px; font-weight: 700;
+      display: flex; align-items: center; gap: 8px;
+    }
+    .about-zone svg { width: 16px; height: 16px; }
+
+    .about-features { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 36px; }
+    .feat {
+      background: var(--c-white); border: 1.5px solid var(--c-border);
+      border-radius: 14px; padding: 18px 16px;
+      display: flex; align-items: flex-start; gap: 12px;
+      transition: border-color .3s, transform .3s;
+    }
+    .feat:hover { border-color: var(--c-sky); transform: translateY(-2px); }
+    .feat-icon {
+      width: 34px; height: 34px; border-radius: 8px;
+      background: var(--c-water);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .feat-icon svg { width: 16px; stroke: var(--c-blue); }
+    .feat-title { font-size: 13px; font-weight: 700; color: var(--c-navy); margin-bottom: 2px; }
+    .feat-desc { font-size: 12px; color: var(--c-muted); line-height: 1.5; }
+
+    /* ================================================================
+      GALERIE
+    ================================================================ */
+    #gallery { background: var(--c-navy); padding: 100px 0; }
+    #gallery .section-title { color: #fff; }
+    #gallery .section-chip { background: rgba(255,255,255,.08); border-color: rgba(255,255,255,.15); color: #7dd3f5; }
+    #gallery .section-chip-dot { background: var(--c-sky); }
+
+    .gallery-intro { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; gap: 32px; }
+    .gallery-desc { color: rgba(255,255,255,.6); font-size: 16px; max-width: 400px; line-height: 1.7; }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      grid-template-rows: 260px 260px;
+      gap: 12px;
+    }
+    .gal { border-radius: 16px; overflow: hidden; position: relative; cursor: pointer; background-size: cover; background-position: center; }
+    .gal { transition: transform .9s cubic-bezier(0.19, 1, 0.22, 1), filter .9s var(--ease); will-change: transform; }
+    .gal:hover { transform: scale(1.07); filter: saturate(1.05); }
+    .gal:nth-child(1){ grid-column:1/6;  grid-row:1/2; }
+    .gal:nth-child(2){ grid-column:6/9;  grid-row:1/2; }
+    .gal:nth-child(3){ grid-column:9/13; grid-row:1/3; }
+    .gal:nth-child(4){ grid-column:1/4;  grid-row:2/3; }
+    .gal:nth-child(5){ grid-column:4/9;  grid-row:2/3; }
+
+    /* ============================================================
+      📸 GALERIE — Remplacez les URLs par vos chantiers
+    ============================================================ -->*/
+    .gal:nth-child(1){ background-image:url('https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=800&q=80'); }
+    .gal:nth-child(2){ background-image:url('https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=600&q=80'); }
+    .gal:nth-child(3){ background-image:url('https://images.unsplash.com/photo-1585704032915-c3400ca199e7?w=600&q=80'); }
+    .gal:nth-child(4){ background-image:url('https://images.unsplash.com/photo-1556909114-f6e7ad7d3136?w=600&q=80'); }
+    .gal:nth-child(5){ background-image:url('https://images.unsplash.com/photo-1631646109186-b5f7c1b28d7d?w=800&q=80'); }
+
+    .gal-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(to top, rgba(13,33,55,.85) 0%, transparent 55%);
+      opacity: 0; transition: opacity .4s;
+      display: flex; align-items: flex-end; padding: 22px;
+    }
+    .gal:hover .gal-overlay { opacity: 1; }
+    .gal-label { font-family: var(--font-display); font-size: 18px; font-weight: 700; color: #fff; letter-spacing: .04em; }
+
+    .gal-zoom {
+      position: absolute; top: 14px; right: 14px;
+      width: 36px; height: 36px; border-radius: 50%;
+      background: rgba(255,255,255,.15); backdrop-filter: blur(8px);
+      display: flex; align-items: center; justify-content: center;
+      opacity: 0; transform: scale(.8);
+      transition: opacity .3s, transform .3s;
+    }
+    .gal:hover .gal-zoom { opacity: 1; transform: scale(1); }
+    .gal-zoom svg { width: 16px; stroke: #fff; }
+
+    /* ================================================================
+      TÉMOIGNAGES
+    ================================================================ */
+    #reviews { background: var(--c-white); }
+    .reviews-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 56px; gap: 32px; }
+    .google-badge {
+      display: flex; align-items: center; gap: 10px;
+      background: var(--c-bg); border: 1.5px solid var(--c-border);
+      border-radius: 14px; padding: 14px 20px;
+    }
+    .google-badge-score { font-family: var(--font-display); font-size: 32px; font-weight: 800; color: var(--c-navy); line-height: 1; }
+    .google-badge-stars { display: flex; gap: 3px; margin: 3px 0; }
+    .google-badge-star { width: 15px; height: 15px; background: #fbbf24; clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%); }
+    .google-badge-label { font-size: 12px; color: var(--c-muted); font-weight: 600; }
+    .google-icon { font-size: 28px; color: var(--c-gold); display: flex; align-items: center; justify-content: center; }
+
+    .reviews-carousel {
+      overflow: hidden;
+      mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+      -webkit-mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    }
+    .reviews-track {
+      display: flex;
+      gap: 18px;
+      width: max-content;
+      animation: reviewsMarquee 38s linear infinite;
+    }
+    .reviews-carousel:hover .reviews-track { animation-play-state: paused; }
+    @keyframes reviewsMarquee {
+      from { transform: translateX(0); }
+      to { transform: translateX(calc(-50% - 9px)); }
+    }
+    .rev-card { width: 340px; flex: 0 0 auto; }
+    .rev-card {
+      background: var(--c-bg); border: 1.5px solid var(--c-border);
+      border-radius: 18px; padding: 28px 24px;
+      display: flex; flex-direction: column; gap: 16px;
+      transition: border-color .3s, transform .35s var(--ease), box-shadow .3s;
+    }
+    .rev-card:hover { border-color: var(--c-sky); transform: translateY(-4px); box-shadow: var(--shadow-md); }
+
+    .rev-stars { display: flex; gap: 3px; }
+    .rev-star { width: 16px; height: 16px; background: #fbbf24; clip-path: polygon(50% 0%,61% 35%,98% 35%,68% 57%,79% 91%,50% 70%,21% 91%,32% 57%,2% 35%,39% 35%); }
+
+    .rev-quote { font-size: 32px; color: var(--c-sky); line-height: 1; margin-bottom: -10px; font-family: Georgia, serif; }
+    .rev-text { font-size: 14px; color: var(--c-muted); line-height: 1.75; flex: 1; }
+
+    .rev-meta { display: flex; align-items: center; gap: 12px; padding-top: 14px; border-top: 1px solid var(--c-border); }
+    .rev-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      font-family: var(--font-display); font-size: 16px; font-weight: 700;
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .rev-name { font-size: 14px; font-weight: 700; color: var(--c-navy); }
+    .rev-source { font-size: 12px; color: var(--c-muted); }
+    .rev-badge {
+      margin-left: auto; font-size: 11px; font-weight: 700;
+      background: var(--c-water); color: var(--c-blue);
+      padding: 3px 8px; border-radius: 6px; white-space: nowrap;
+    }
+
+    /* ================================================================
+      ZONE D'INTERVENTION
+    ================================================================ */
+    #zone { background: var(--c-bg); }
+    .zone-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .zone-map {
+      background: var(--c-white); border: 1.5px solid var(--c-border);
+      border-radius: 24px; overflow: hidden;
+      height: 380px; position: relative;
+      display: flex; align-items: center; justify-content: center;
+      box-shadow: var(--shadow-md);
+    }
+    .zone-map-placeholder {
+      display: flex; flex-direction: column; align-items: center; gap: 16px;
+      color: var(--c-muted); text-align: center;
+    }
+    .zone-map-icon { width: 64px; height: 64px; background: var(--c-water); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
+    .zone-map-icon svg { width: 30px; stroke: var(--c-blue); }
+    .zone-cities { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+    .zone-city {
+      background: var(--c-white); border: 1.5px solid var(--c-border);
+      border-radius: 100px; padding: 7px 16px;
+      font-size: 14px; font-weight: 600; color: var(--c-navy);
+      transition: border-color .25s, background .25s, color .25s;
+    }
+    .zone-city:hover, .zone-city.active { background: var(--c-blue); border-color: var(--c-blue); color: #fff; }
+
+    /* ================================================================
+      URGENCE CTA
+    ================================================================ */
+    #cta {
+      background: linear-gradient(135deg, var(--c-navy) 0%, var(--c-blue) 100%);
+      padding: 90px 0; position: relative; overflow: hidden;
+    }
+    .cta-bg-shape {
+      position: absolute; right: -100px; top: -100px;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: rgba(46,155,214,.1);
+      pointer-events: none;
+    }
+    .cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 48px; position: relative; z-index: 1; }
+    .cta-left { flex: 1; }
+    .cta-title {
+      font-family: var(--font-display); font-size: clamp(42px, 5vw, 68px);
+      font-weight: 800; color: #fff; line-height: .95; margin-bottom: 16px;
+    }
+    .cta-desc { color: rgba(255,255,255,.7); font-size: 16px; line-height: 1.7; max-width: 420px; }
+    .cta-right { display: flex; flex-direction: column; align-items: flex-end; gap: 18px; flex-shrink: 0; }
+    .cta-phone-num {
+      font-family: var(--font-display); font-size: 48px; font-weight: 800;
+      color: #fff; letter-spacing: .04em;
+      display: flex; align-items: center; gap: 10px;
+    }
+    .cta-phone-icon { width: 50px; height: 50px; background: var(--c-orange); border-radius: 50%; display: flex; align-items: center; justify-content: center; animation: ringRing 3s ease-in-out infinite; }
+    @keyframes ringRing { 0%,80%,100%{transform:rotate(0)} 10%{transform:rotate(20deg)} 20%{transform:rotate(-18deg)} 30%{transform:rotate(14deg)} 40%{transform:rotate(-10deg)} 50%{transform:rotate(6deg)} 60%{transform:rotate(-4deg)} 70%{transform:rotate(2deg)} }
+    .cta-phone-icon svg { width: 22px; stroke: #fff; }
+    .cta-phone-num {
+      animation: ctaPulse 2.8s ease-in-out infinite;
+      transform-origin: right center;
+    }
+    @keyframes ctaPulse {
+      0%, 100% { transform: scale(1); text-shadow: 0 0 0 rgba(197,160,89,0); }
+      50% { transform: scale(1.03); text-shadow: 0 0 16px rgba(197,160,89,.45); }
+    }
+
+    .g-floating-badge {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 140;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: rgba(10,25,47,.95);
+      color: #fff;
+      border: 1px solid rgba(197,160,89,.65);
+      border-radius: 999px;
+      padding: 10px 14px;
+      box-shadow: 0 12px 30px rgba(10,25,47,.35);
+      opacity: 0;
+      transform: translateY(16px) scale(.94);
+      pointer-events: none;
+      transition: opacity .35s var(--ease), transform .35s var(--ease);
+      backdrop-filter: blur(8px);
+    }
+    .g-floating-badge.visible {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: auto;
+      animation: floatGoogle 3.2s ease-in-out infinite;
+    }
+    .g-badge-icon {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: linear-gradient(145deg, #fff, #f5ede0);
+      color: #4285f4;
+      font-family: var(--font-display);
+      font-size: 17px;
+      font-weight: 800;
+    }
+    .g-badge-text { font-size: 12px; color: rgba(255,255,255,.84); }
+    .g-badge-text strong { color: #fff; letter-spacing: .02em; }
+    @keyframes floatGoogle {
+      0%,100% { transform: translateY(0); }
+      50% { transform: translateY(-4px); }
+    }
+
+    [data-lucide] { width: 18px; height: 18px; stroke-width: 1.8; }
+    .svc-icon-wrap [data-lucide] { width: 24px; height: 24px; color: var(--c-gold); }
+    .svc-card:hover .svc-icon-wrap [data-lucide] { color: #fff; }
+    .svc-card.urgent .svc-icon-wrap [data-lucide] { color: var(--c-gold); }
+    .contact-item-icon [data-lucide], .feat-icon [data-lucide], .zone-map-icon [data-lucide], .cta-phone-icon [data-lucide], .hero-stat-icon [data-lucide] { color: currentColor; }
+    .contact-item-icon, .feat-icon, .zone-map-icon { color: var(--c-gold); }
+
+    /* ================================================================
+      CONTACT
+    ================================================================ */
+    #contact { background: var(--c-white); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.3fr; gap: 80px; }
+
+    .contact-card {
+      background: var(--c-navy); border-radius: 24px; padding: 40px 36px;
+      display: flex; flex-direction: column; gap: 28px;
+    }
+    .contact-card-title { font-family: var(--font-display); font-size: 32px; font-weight: 800; color: #fff; }
+    .contact-item { display: flex; align-items: flex-start; gap: 14px; }
+    .contact-item-icon {
+      width: 42px; height: 42px; border-radius: 10px;
+      background: rgba(46,155,214,.2);
+      display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .contact-item-icon svg { width: 20px; stroke: var(--c-sky); }
+    .contact-item-label { font-size: 11px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.45); margin-bottom: 3px; }
+    .contact-item-value { font-size: 16px; font-weight: 600; color: #fff; }
+    .contact-item-value a { color: #fff; }
+
+    .contact-lgbtq {
+      display: flex; align-items: center; gap: 10px;
+      background: rgba(255,255,255,.07); border-radius: 12px; padding: 14px 16px;
+      font-size: 13px; color: rgba(255,255,255,.7); font-weight: 500;
+      border: 1px solid rgba(255,255,255,.1);
+    }
+
+    /* Form */
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    .form-group { margin-bottom: 18px; }
+    label { display: block; font-size: 13px; font-weight: 700; letter-spacing: .06em; text-transform: uppercase; color: var(--c-navy); margin-bottom: 8px; }
+    input, textarea, select {
+      width: 100%; background: var(--c-bg);
+      border: 1.5px solid var(--c-border);
+      border-radius: 12px; padding: 13px 16px;
+      color: var(--c-text); font-family: var(--font-body); font-size: 15px;
+      outline: none; transition: border-color .25s, background .25s;
+    }
+    input:focus, textarea:focus, select:focus { border-color: var(--c-sky); background: var(--c-white); }
+    textarea { height: 110px; resize: none; }
+    ::placeholder { color: #a8b8c8; }
+
+    .btn-submit {
+      width: 100%; background: var(--c-blue); color: #fff;
+      font-family: var(--font-body); font-size: 16px; font-weight: 700;
+      padding: 16px; border-radius: 12px; border: none; cursor: pointer;
+      transition: background .25s, transform .2s, box-shadow .2s;
+      display: flex; align-items: center; justify-content: center; gap: 8px;
+      box-shadow: 0 4px 20px rgba(21,101,168,.3);
+    }
+    .btn-submit:hover { background: var(--c-navy); transform: translateY(-2px); box-shadow: 0 8px 28px rgba(21,101,168,.4); }
+
+    /* ================================================================
+      FOOTER
+    ================================================================ */
+    footer { background: var(--c-navy); padding: 60px 0 36px; }
+    .footer-grid { display: grid; grid-template-columns: 1.6fr 1fr 1fr 1fr; gap: 48px; margin-bottom: 48px; }
+    .footer-logo { margin-bottom: 14px; }
+    .footer-desc { font-size: 14px; color: rgba(255,255,255,.5); line-height: 1.7; max-width: 240px; }
+    .footer-col-title { font-size: 12px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: rgba(255,255,255,.5); margin-bottom: 16px; }
+    .footer-links { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+    .footer-links a { font-size: 14px; color: rgba(255,255,255,.6); transition: color .25s; }
+    .footer-links a:hover { color: var(--c-sky); }
+    .footer-bottom { padding-top: 28px; border-top: 1px solid rgba(255,255,255,.08); display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .footer-copy { font-size: 13px; color: rgba(255,255,255,.35); }
+
+    /* ================================================================
+      RESPONSIVE
+    ================================================================ */
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .nav-links.open {
+        display: flex; flex-direction: column;
+        position: fixed; inset: 0; background: var(--c-white);
+        align-items: center; justify-content: center; gap: 32px; z-index: 99;
+      }
+      .nav-links.open a { color: var(--c-navy) !important; font-size: 20px; }
+      .burger { display: flex; }
+      nav:not(.scrolled) .logo { color: #fff; }
+      nav:not(.scrolled) .logo-text-sub { color: rgba(255,255,255,.7); }
+
+      .services-header { flex-direction: column; align-items: flex-start; }
+      .services-grid { grid-template-columns: 1fr; }
+      .about-grid, .zone-grid, .contact-grid { grid-template-columns: 1fr; }
+      .about-img-stack { height: 320px; }
+      .gallery-grid { grid-template-columns: 1fr 1fr; grid-template-rows: auto; }
+      .gal { grid-column:auto!important; grid-row:auto!important; height: 200px; }
+      .reviews-carousel { overflow: visible; mask-image: none; -webkit-mask-image: none; }
+      .reviews-track { animation: none; flex-direction: column; width: auto; }
+      .rev-card { width: 100%; }
+      .cta-inner { flex-direction: column; align-items: flex-start; }
+      .cta-right { align-items: flex-start; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+      .footer-bottom { flex-direction: column; text-align: center; }
+      .hero-stats { flex-direction: column; }
+      .reviews-header { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ================================================================
+  NAV
+================================================================ -->
+<nav id="nav">
+  <div class="container nav-inner">
+    <!-- ============================================================
+      🏢 LOGO — Modifier le nom ou remplacer par une image
+      Ex: <img src="images/logo.svg" alt="TPT" style="height:44px;" />
+    ============================================================ -->
+    <a href="#" class="logo">
+      <div class="logo-mark">
+        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round">
+          <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/>
+        </svg>
+      </div>
+      <div>
+        <div class="logo-text-top">TPT</div>
+        <div class="logo-text-sub">Plomberie & Clim</div>
+      </div>
+    </a>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#about">À propos</a></li>
+      <li><a href="#gallery">Réalisations</a></li>
+      <li><a href="#reviews">Avis</a></li>
+      <li><a href="#zone">Zone</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+
+    <!-- ============================================================
+      📞 TÉLÉPHONE NAV — Modifier ici
+    ============================================================ -->
+    <a href="tel:+33787573424" class="nav-phone nav-links-item">
+      <i data-lucide="phone-call"></i>
+      07 87 57 34 24
+    </a>
+
+    <div class="burger" id="burger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- ================================================================
+  HERO
+================================================================ -->
+<section id="hero">
+  <div class="hero-bg-img" role="img" aria-label="Depannage plomberie urgente Talence et Agglomeration Bordelaise"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-ripple"></div>
+  <div class="hero-wave" id="heroWave">
+    <svg viewBox="0 0 1440 96" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path id="heroWavePath" d="M0,40 C240,70 480,15 720,40 C960,65 1200,15 1440,40 L1440,96 L0,96 Z"></path>
+    </svg>
+  </div>
+  <div class="hero-shape">
+    <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+      <path d="M0,80 C360,20 1080,20 1440,80 L1440,80 L0,80 Z" fill="#f5f8fc"/>
+    </svg>
+  </div>
+
+  <div class="container hero-content">
+    <!-- ============================================================
+      📝 HERO — Modifier le titre, sous-titre et accroche
+    ============================================================ -->
+    <div class="hero-badge">
+      <span class="hero-badge-star">★</span>
+      5,0 sur Google · 81 avis vérifiés
+    </div>
+
+    <h1 class="hero-title">
+      PLOMBERIE<br>
+      <span class="accent">& CLIMATISATION</span><br>
+      <span style="font-size:.7em;color:rgba(255,255,255,.85)">TALENCE</span>
+    </h1>
+
+    <p class="hero-desc">
+      TPT Plomberie & Climatisation — professionnel réactif, propre et honnête.
+      Disponible <strong style="color:#fff;">24h/24 · 7j/7</strong> pour toutes vos urgences sur Talence et l'agglomération bordelaise.
+    </p>
+
+    <div class="hero-actions">
+      <a href="tel:+33787573424" class="btn-primary">
+        <i data-lucide="phone-call"></i>
+        Urgence — 07 87 57 34 24
+      </a>
+      <a href="#contact" class="btn-secondary">
+        Devis gratuit →
+      </a>
+    </div>
+
+    <div class="hero-stats">
+      <!-- ============================================================
+        📊 CHIFFRES — Modifier selon votre activité
+      ============================================================ -->
+      <div class="hero-stat">
+        <div class="hero-stat-icon"><i data-lucide="star"></i></div>
+        <div><div class="hero-stat-num">5,0 ★</div><div class="hero-stat-label">Note Google</div></div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-icon"><i data-lucide="users"></i></div>
+        <div><div class="hero-stat-num">81</div><div class="hero-stat-label">Avis clients</div></div>
+      </div>
+      <div class="hero-stat">
+        <div class="hero-stat-icon"><i data-lucide="clock-3"></i></div>
+        <div><div class="hero-stat-num">24h/24</div><div class="hero-stat-label">Disponibilité</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+  BANDEAU URGENCE
+================================================================ -->
+<div class="urgent-band">
+  <div class="container urgent-band-inner">
+    <div class="urgent-left">
+      <div class="urgent-dot"></div>
+      <div class="urgent-text">
+        Urgence plomberie ? On intervient maintenant.
+        <span>Talence &amp; agglomération bordelaise.</span>
+      </div>
+    </div>
+    <a href="tel:+33787573424" class="urgent-phone">
+      <i data-lucide="phone-call"></i>
+      07 87 57 34 24
+    </a>
+  </div>
+</div>
+
+<!-- ================================================================
+  SERVICES
+================================================================ -->
+<section id="services">
+  <div class="container">
+    <div class="services-header reveal">
+      <div>
+        <div class="section-chip"><span class="section-chip-dot"></span>Prestations</div>
+        <h2 class="section-title">NOS SERVICES<br>PLOMBERIE & CLIM</h2>
+      </div>
+      <p class="section-desc">Dépannage, installation, entretien — une réponse professionnelle pour chaque situation, avec devis transparent avant intervention.</p>
+    </div>
+
+    <div class="services-grid stagger">
+      <!-- ============================================================
+        ⚙️ SERVICES — Modifier/ajouter selon votre offre
+      ============================================================ -->
+      <div class="svc-card urgent">
+        <div class="svc-num">URGENCE</div>
+        <div class="svc-icon-wrap">
+          <i data-lucide="zap"></i>
+        </div>
+        <h3 class="svc-title">DÉPANNAGE RAPIDE</h3>
+        <p class="svc-desc">Fuite, canalisation bouchée, chasse d'eau cassée — intervention d'urgence avec un professionnel disponible 24h/24.</p>
+        <span class="svc-tag">⚡ Disponible maintenant</span>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-num">01</div>
+        <div class="svc-icon-wrap">
+          <i data-lucide="droplets"></i>
+        </div>
+        <h3 class="svc-title">DÉTECTION FUITE</h3>
+        <p class="svc-desc">Localisation précise des fuites cachées grâce aux techniques modernes — sans démolition inutile.</p>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-num">02</div>
+        <div class="svc-icon-wrap">
+          <i data-lucide="bath"></i>
+        </div>
+        <h3 class="svc-title">INSTALLATION SANITAIRE</h3>
+        <p class="svc-desc">Pose de WC, lavabo, baignoire, douche, robinetterie — travaux propres et soignés, comme l'apprécient nos clients.</p>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-num">03</div>
+        <div class="svc-icon-wrap">
+          <i data-lucide="flame"></i>
+        </div>
+        <h3 class="svc-title">CHAUFFE-EAU</h3>
+        <p class="svc-desc">Remplacement et installation de chauffe-eau électrique, thermodynamique ou gaz. Toutes marques, garantie pièces.</p>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-num">04</div>
+        <div class="svc-icon-wrap">
+          <i data-lucide="wind"></i>
+        </div>
+        <h3 class="svc-title">CLIMATISATION</h3>
+        <p class="svc-desc">Installation, entretien et dépannage de climatiseurs split-system. Confort thermique toute l'année, efficacité énergétique garantie.</p>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-num">05</div>
+        <div class="svc-icon-wrap">
+          <i data-lucide="house"></i>
+        </div>
+        <h3 class="svc-title">ENTRETIEN & RÉNOVATION</h3>
+        <p class="svc-desc">Contrôle de l'installation, prévention calcaire, remplacement de canalisations — pour prolonger la durée de vie de votre plomberie.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+  À PROPOS
+================================================================ -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-img-stack reveal-left">
+        <div class="about-img-a" role="img" aria-label="Artisan plombier en intervention a Talence"></div>
+        <div class="about-img-b" role="img" aria-label="Installation sanitaire et robinetterie en Gironde"></div>
+        <div class="about-rating">
+          <div class="rating-num">5,0</div>
+          <div class="rating-stars">
+            <div class="rating-star"></div><div class="rating-star"></div>
+            <div class="rating-star"></div><div class="rating-star"></div><div class="rating-star"></div>
+          </div>
+          <div class="rating-label">81 avis Google</div>
+        </div>
+        <div class="about-zone">
+          <i data-lucide="map-pin"></i>
+          Talence, 33400
+        </div>
+      </div>
+
+      <div class="reveal-right">
+        <div class="section-chip"><span class="section-chip-dot"></span>Qui sommes-nous</div>
+        <!-- ============================================================
+          📝 À PROPOS — Modifier le texte de présentation
+        ============================================================ -->
+        <h2 class="section-title">UN ARTISAN<br>QUI TIENT<br>SA PAROLE</h2>
+        <p class="section-desc" style="margin-bottom:28px;">
+          TPT Plomberie et Climatisation accompagne les habitants de Talence et de l'agglomération bordelaise depuis plusieurs années. La priorité ? Un travail propre, rapide, avec un prix honnête annoncé avant de commencer.
+        </p>
+        <p class="section-desc">
+          81 avis 5 étoiles sur Google, ce n'est pas du hasard — c'est la conséquence d'une équipe ponctuelle, à l'écoute, et qui range derrière elle.
+        </p>
+
+        <div class="about-features stagger">
+          <div class="feat">
+            <div class="feat-icon"><i data-lucide="check"></i></div>
+            <div>
+              <div class="feat-title">Travail propre & soigné</div>
+              <div class="feat-desc">Chantier protégé, nettoyage systématique après intervention.</div>
+            </div>
+          </div>
+          <div class="feat">
+            <div class="feat-icon"><i data-lucide="clock-3"></i></div>
+            <div>
+              <div class="feat-title">Réactif & ponctuel</div>
+              <div class="feat-desc">On trouve toujours un créneau, même entre deux interventions.</div>
+            </div>
+          </div>
+          <div class="feat">
+            <div class="feat-icon"><i data-lucide="badge-euro"></i></div>
+            <div>
+              <div class="feat-title">Prix honnête</div>
+              <div class="feat-desc">Devis clair avant intervention. Jamais de surprise sur facture.</div>
+            </div>
+          </div>
+          <div class="feat">
+            <div class="feat-icon"><i data-lucide="shield-check"></i></div>
+            <div>
+              <div class="feat-title">Assurance & garantie</div>
+              <div class="feat-desc">Travaux garantis, artisan assuré, facture détaillée fournie.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+  GALERIE
+================================================================ -->
+<section id="gallery">
+  <div class="container">
+    <div class="gallery-intro reveal">
+      <div>
+        <div class="section-chip"><span class="section-chip-dot"></span>Portfolio</div>
+        <h2 class="section-title">NOS RÉALISATIONS</h2>
+      </div>
+      <p class="gallery-desc">Quelques chantiers récents — des petits dépannages aux rénovations complètes de salle de bain.</p>
+    </div>
+
+    <!-- ============================================================
+      📸 GALERIE — Remplacez les URLs dans le CSS ci-dessus
+      Cherchez les .gal:nth-child(N) dans la section #gallery CSS
+    ============================================================ -->
+    <div class="gallery-grid">
+      <div class="gal reveal" style="transition-delay:.05s" role="img" aria-label="Renovation salle de bain a Talence">
+        <div class="gal-overlay"><span class="gal-label">Rénovation salle de bain</span></div>
+        <div class="gal-zoom"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+      </div>
+      <div class="gal reveal" style="transition-delay:.12s" role="img" aria-label="Installation robinetterie dans l Agglomeration Bordelaise">
+        <div class="gal-overlay"><span class="gal-label">Installation robinetterie</span></div>
+        <div class="gal-zoom"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+      </div>
+      <div class="gal reveal" style="transition-delay:.20s" role="img" aria-label="Depannage plomberie urgent Talence">
+        <div class="gal-overlay"><span class="gal-label">Dépannage urgent</span></div>
+        <div class="gal-zoom"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+      </div>
+      <div class="gal reveal" style="transition-delay:.08s" role="img" aria-label="Changement de WC par plombier Talence">
+        <div class="gal-overlay"><span class="gal-label">Changement WC</span></div>
+        <div class="gal-zoom"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+      </div>
+      <div class="gal reveal" style="transition-delay:.16s" role="img" aria-label="Pose chauffe-eau dans l Agglomeration Bordelaise">
+        <div class="gal-overlay"><span class="gal-label">Pose chauffe-eau</span></div>
+        <div class="gal-zoom"><svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><line x1="11" y1="8" x2="11" y2="14"/><line x1="8" y1="11" x2="14" y2="11"/></svg></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+  TÉMOIGNAGES — Vrais avis Google
+================================================================ -->
+<section id="reviews">
+  <div class="container">
+    <div class="reviews-header reveal">
+      <div>
+        <div class="section-chip"><span class="section-chip-dot"></span>Avis clients</div>
+        <h2 class="section-title">CE QUE DISENT<br>NOS CLIENTS</h2>
+      </div>
+      <div class="google-badge">
+        <div>
+          <div class="google-badge-score">5,0</div>
+          <div class="google-badge-stars">
+            <div class="google-badge-star"></div><div class="google-badge-star"></div>
+            <div class="google-badge-star"></div><div class="google-badge-star"></div><div class="google-badge-star"></div>
+          </div>
+          <div class="google-badge-label">81 avis · Google Maps</div>
+        </div>
+        <div class="google-icon"><i data-lucide="badge-check"></i></div>
+      </div>
+    </div>
+
+    <div class="reviews-carousel stagger">
+      <div class="reviews-track" id="reviewsTrack">
+      <!-- ============================================================
+        ⭐ AVIS — Vrais avis Google, à compléter avec vos autres avis
+      ============================================================ -->
+      <div class="rev-card">
+        <div class="rev-stars"><div class="rev-star"></div><div class="rev-star"></div><div class="rev-star"></div><div class="rev-star"></div><div class="rev-star"></div></div>
+        <div class="rev-quote">"</div>
+        <p class="rev-text">Artisan très professionnel, ponctuel, disponible et rigoureux. Arrangeant car vous trouvera un créneau entre deux. Travail de qualité, propre, rapide et soigné. Très bon rapport qualité-prix.</p>
+        <div class="rev-meta">
+          <div class="rev-avatar" style="background:#e8f4fd;color:#1565a8;">NK</div>
+          <div>
+            <div class="rev-name">Nelly Kepseu</div>
+            <div class="rev-source">Visité en février · Google</div>
+          </div>
+          <div class="rev-badge">Vérifié</div>
+        </div>
+      </div>
+
+      <div class="rev-card">
+        <div class="rev-stars"><div class="rev-star"></div><div class="rev-star"></div><div class="rev-star"></div><div class="rev-star"></div><div class="rev-star"></div></div>
+        <div class="rev-quote">"</div>
+        <p class="rev-text">Travail propre et rapide par un plombier qui connaît son métier. Prix honnête. Je le recommande vivement.</p>
+        <div class="rev-meta">
+          <div class="rev-avatar" style="background:#fff3e8;color:#f47c20;">HP</div>
+          <div>
+            <div class="rev-name">Hans Prestat</div>
+            <div class="rev-source">Local Guide · 58 avis · Google</div>
+          </div>
+          <div class="rev-badge">Local Guide</div>
+        </div>
+      </div>
+
+      <div class="rev-card">
+        <div class="rev-stars"><div class="rev-star"></div><div class="rev-star"></div><div class="rev-star"></div><div class="rev-star"></div><div class="rev-star"></div></div>
+        <div class="rev-quote">"</div>
+        <p class="rev-text">Changement de toilettes redouté et pourtant parfaitement accompli. Merci beaucoup pour votre professionnalisme, votre gentillesse et tous vos conseils. Travaux propres et soignés, professionnel à l'écoute. Nous recommandons sans hésiter.</p>
+        <div class="rev-meta">
+          <div class="rev-avatar" style="background:#edf4fb;color:#2e9bd6;">CP</div>
+          <div>
+            <div class="rev-name">Cindy Pedelaborde</div>
+            <div class="rev-source">Visité en janvier · Google</div>
+          </div>
+          <div class="rev-badge">Vérifié</div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+  ZONE D'INTERVENTION
+================================================================ -->
+<section id="zone">
+  <div class="container">
+    <div class="zone-grid">
+      <div class="reveal-left">
+        <div class="section-chip"><span class="section-chip-dot"></span>Zone couverte</div>
+        <h2 class="section-title">ON INTERVIENT<br>PRÈS DE CHEZ<br>VOUS</h2>
+        <p class="section-desc" style="margin-bottom:28px;">
+          <!-- ↑ Modifier: villes couvertes -->
+          Basé à Talence (33400), TPT intervient rapidement sur toute l'agglomération bordelaise. Moins de 45 minutes en urgence.
+        </p>
+
+        <!-- ============================================================
+          📍 VILLES — Modifier la liste selon votre zone réelle
+        ============================================================ -->
+        <div class="zone-cities">
+          <span class="zone-city active">Talence</span>
+          <span class="zone-city">Bordeaux</span>
+          <span class="zone-city">Mérignac</span>
+          <span class="zone-city">Pessac</span>
+          <span class="zone-city">Gradignan</span>
+          <span class="zone-city">Villenave-d'Ornon</span>
+          <span class="zone-city">Bègles</span>
+          <span class="zone-city">Mérignac</span>
+          <span class="zone-city">Le Bouscat</span>
+          <span class="zone-city">Lormont</span>
+          <span class="zone-city">Cenon</span>
+        </div>
+      </div>
+
+      <div class="zone-map reveal-right">
+        <!-- ============================================================
+          🗺️ CARTE — Remplacez ce placeholder par une vraie carte
+          Option 1: Google Maps embed (gratuit)
+          <iframe src="https://maps.google.com/maps?q=Talence&output=embed" width="100%" height="100%" frameborder="0" style="border:0;border-radius:24px;"></iframe>
+          Option 2: Mapbox (plus beau)
+        ============================================================ -->
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2830.22384976451!2d-0.5925340234053749!3d44.81699707107054!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd5527038e2354c7%3A0x406659744c20840!2s33400%20Talence!5e0!3m2!1sfr!2sfr!4v1711394000000!5m2!1sfr!2sfr" width="100%" height="100%" style="border:0; border-radius: 24px; display:block;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Carte Google Maps Talence"></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+  URGENCE CTA
+================================================================ -->
+<section id="cta" style="padding:90px 0;">
+  <div class="cta-bg-shape"></div>
+  <div class="container">
+    <div class="cta-inner reveal">
+      <div class="cta-left">
+        <h2 class="cta-title">UNE FUITE ?<br>ON ARRIVE.</h2>
+        <p class="cta-desc">Disponible 24h/24, 7j/7. Pas de frais cachés. Un artisan qui connaît son métier et vous le prouve dès la première minute.</p>
+      </div>
+      <div class="cta-right">
+        <a href="tel:+33787573424" class="cta-phone-num">
+          <div class="cta-phone-icon">
+            <i data-lucide="phone-call"></i>
+          </div>
+          07 87 57 34 24
+        </a>
+        <a href="#contact" class="btn-secondary">Ou demandez un devis →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+  CONTACT
+================================================================ -->
+<section id="contact">
+  <div class="container">
+    <div class="reveal" style="margin-bottom:56px;">
+      <div class="section-chip"><span class="section-chip-dot"></span>Contactez-nous</div>
+      <h2 class="section-title">DEVIS GRATUIT<br>RÉPONSE RAPIDE</h2>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-card reveal-left">
+        <div class="contact-card-title">Nos coordonnées</div>
+
+        <!-- ============================================================
+          📍 COORDONNÉES — Modifier avec vos vraies infos
+        ============================================================ -->
+        <div class="contact-item">
+          <div class="contact-item-icon"><i data-lucide="phone-call"></i></div>
+          <div>
+            <div class="contact-item-label">Téléphone</div>
+            <div class="contact-item-value"><a href="tel:+33787573424">07 87 57 34 24</a></div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-item-icon"><i data-lucide="map-pin"></i></div>
+          <div>
+            <div class="contact-item-label">Adresse</div>
+            <div class="contact-item-value">33400 Talence, Gironde</div>
+          </div>
+        </div>
+
+        <div class="contact-item">
+          <div class="contact-item-icon"><i data-lucide="clock-3"></i></div>
+          <div>
+            <div class="contact-item-label">Disponibilité</div>
+            <div class="contact-item-value">Ouvert 24h/24 · 7j/7</div>
+          </div>
+        </div>
+
+        <div class="contact-lgbtq">
+          🏳️‍🌈 Établissement LGBTQ+ friendly — tout le monde est bienvenu.
+        </div>
+      </div>
+
+      <div class="reveal-right">
+        <form id="contactForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="nom">Prénom & nom *</label>
+              <input type="text" id="nom" placeholder="Jean Dupont" required />
+            </div>
+            <div class="form-group">
+              <label for="tel">Téléphone *</label>
+              <input type="tel" id="tel" placeholder="07 00 00 00 00" required />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="ville">Ville</label>
+            <input type="text" id="ville" placeholder="Talence, Bordeaux..." />
+          </div>
+          <div class="form-group">
+            <label for="service">Type d'intervention</label>
+            <select id="service">
+              <option value="">Choisir...</option>
+              <option>Urgence — fuite / dégât des eaux</option>
+              <option>Canalisation bouchée</option>
+              <option>Chauffe-eau / cumulus</option>
+              <option>Climatisation</option>
+              <option>Installation sanitaire</option>
+              <option>Rénovation salle de bain</option>
+              <option>Entretien / maintenance</option>
+              <option>Autre</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="message">Description</label>
+            <textarea id="message" placeholder="Décrivez votre problème ou votre projet..."></textarea>
+          </div>
+          <button type="submit" class="btn-submit">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+            Envoyer ma demande
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================================================
+  FOOTER
+================================================================ -->
+<footer>
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <div class="logo" style="color:#fff;">
+            <div class="logo-mark" style="transform:none;">
+              <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.2" stroke-linecap="round"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"/></svg>
+            </div>
+            <div>
+              <div class="logo-text-top">TPT</div>
+              <div class="logo-text-sub" style="color:rgba(255,255,255,.5)">Plomberie & Clim</div>
+            </div>
+          </div>
+        </div>
+        <p class="footer-desc">Artisan plombier-chauffagiste à Talence. 5★ sur Google · 24h/24 · Prix honnêtes.</p>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Services</div>
+        <ul class="footer-links">
+          <li><a href="#services">Dépannage urgent</a></li>
+          <li><a href="#services">Détection de fuite</a></li>
+          <li><a href="#services">Installation sanitaire</a></li>
+          <li><a href="#services">Climatisation</a></li>
+          <li><a href="#services">Chauffe-eau</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Zones</div>
+        <ul class="footer-links">
+          <li><a href="#zone">Talence</a></li>
+          <li><a href="#zone">Bordeaux</a></li>
+          <li><a href="#zone">Pessac</a></li>
+          <li><a href="#zone">Mérignac</a></li>
+          <li><a href="#zone">Gironde (33)</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="tel:+33787573424">07 87 57 34 24</a></li>
+          <li><a href="#contact">Demander un devis</a></li>
+          <li><a href="#about">À propos</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <!-- ↑ Modifier: mentions légales -->
+      <span class="footer-copy">© 2025 TPT Plomberie et Climatisation — Talence (33400)</span>
+      <span class="footer-copy">Mentions légales · Confidentialité</span>
+    </div>
+  </div>
+</footer>
+
+<!-- ================================================================
+  JAVASCRIPT
+================================================================ -->
+<div class="g-floating-badge" id="floatingGoogleBadge">
+  <span class="g-badge-icon">G</span>
+  <span class="g-badge-text"><strong>81 avis - 5/5</strong><br>Google</span>
+</div>
+
+<script>
+  // ── Nav scroll ─────────────────────────────────────────────────
+  const nav = document.getElementById('nav');
+  const floatingBadge = document.getElementById('floatingGoogleBadge');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+    floatingBadge.classList.toggle('visible', window.scrollY > 220);
+  }, { passive: true });
+
+  // ── Burger ─────────────────────────────────────────────────────
+  document.getElementById('burger').addEventListener('click', () => {
+    document.getElementById('navLinks').classList.toggle('open');
+  });
+  document.querySelectorAll('#navLinks a').forEach(a => {
+    a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('open'));
+  });
+
+  // ── Framer Motion reveal + stagger services ────────────────────
+  const fm = window.Motion || window.motion;
+  if (fm && typeof fm.animate === 'function' && typeof fm.inView === 'function') {
+    fm.inView('.reveal, .reveal-left, .reveal-right', (el) => {
+      const fromX = el.classList.contains('reveal-left') ? -38 : el.classList.contains('reveal-right') ? 38 : 0;
+      fm.animate(
+        el,
+        { opacity: [0, 1], x: [fromX, 0], y: [34, 0] },
+        { duration: 0.9, easing: [0.22, 1, 0.36, 1] }
+      );
+      el.classList.add('visible');
+    }, { margin: '0px 0px -12% 0px' });
+
+    fm.inView('.services-grid', (el) => {
+      const cards = el.querySelectorAll('.svc-card');
+      fm.animate(
+        cards,
+        { opacity: [0, 1], y: [34, 0] },
+        { delay: fm.stagger(0.11), duration: 0.75, easing: [0.22, 1, 0.36, 1] }
+      );
+      el.classList.add('visible');
+    }, { margin: '0px 0px -15% 0px' });
+  } else {
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((e) => { if (e.isIntersecting) e.target.classList.add('visible'); });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .stagger').forEach((el) => observer.observe(el));
+  }
+
+  // ── Parallax hero ──────────────────────────────────────────────
+  const heroBg = document.querySelector('.hero-bg-img');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY < window.innerHeight && heroBg) {
+      heroBg.style.transform = `scale(1) translateY(${window.scrollY * 0.2}px)`;
+    }
+  }, { passive: true });
+
+  // ── Hero interactive wave ──────────────────────────────────────
+  const heroWave = document.getElementById('heroWave');
+  const heroWavePath = document.getElementById('heroWavePath');
+  if (heroWave && heroWavePath) {
+    heroWave.addEventListener('mousemove', (evt) => {
+      const rect = heroWave.getBoundingClientRect();
+      const x = Math.max(0, Math.min(1, (evt.clientX - rect.left) / rect.width));
+      const lift = 20 + Math.sin(x * Math.PI) * 35;
+      const ctrlY1 = 74 - lift * 0.5;
+      const ctrlY2 = 10 + lift;
+      heroWavePath.setAttribute(
+        'd',
+        `M0,40 C240,${ctrlY1.toFixed(2)} 480,${ctrlY2.toFixed(2)} 720,40 C960,${(ctrlY1 + 8).toFixed(2)} 1200,${(ctrlY2 - 6).toFixed(2)} 1440,40 L1440,96 L0,96 Z`
+      );
+    });
+    heroWave.addEventListener('mouseleave', () => {
+      heroWavePath.setAttribute('d', 'M0,40 C240,70 480,15 720,40 C960,65 1200,15 1440,40 L1440,96 L0,96 Z');
+    });
+  }
+
+  // ── Zone city hover ────────────────────────────────────────────
+  document.querySelectorAll('.zone-city').forEach(city => {
+    city.addEventListener('click', function() {
+      document.querySelectorAll('.zone-city').forEach(c => c.classList.remove('active'));
+      this.classList.add('active');
+    });
+  });
+
+  // ── Reviews infinite carousel clone ────────────────────────────
+  const reviewsTrack = document.getElementById('reviewsTrack');
+  if (reviewsTrack) {
+    reviewsTrack.innerHTML += reviewsTrack.innerHTML;
+  }
+
+  // ── Lucide icons ───────────────────────────────────────────────
+  if (window.lucide && typeof window.lucide.createIcons === 'function') {
+    window.lucide.createIcons();
+  }
+
+  // ── Form ──────────────────────────────────────────────────────
+  document.getElementById('contactForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const nom = (document.getElementById('nom').value || '').trim();
+    const tel = (document.getElementById('tel').value || '').trim();
+    const ville = (document.getElementById('ville').value || '').trim();
+    const service = (document.getElementById('service').value || '').trim();
+    const message = (document.getElementById('message').value || '').trim();
+    const btn = this.querySelector('.btn-submit');
+
+    const whatsappText = [
+      'Bonjour TPT ! 👋 J\'ai besoin de vos services :',
+      `Nom : ${nom || 'Non renseigne'}`,
+      `Ville : ${ville || 'Non renseignee'}`,
+      `Raison : ${service || 'Non renseignee'}`,
+      `Details : ${message || 'Non renseigne'}`,
+      `Recontactez-moi au ${tel || 'Telephone non renseigne'}.`
+    ].join('\n');
+
+    const whatsappUrl = `https://wa.me/33787573424?text=${encodeURIComponent(whatsappText)}`;
+
+    btn.innerHTML = `<i data-lucide="message-circle-more"></i> Ouverture de WhatsApp...`;
+    btn.style.background = '#1D9E75';
+    if (window.lucide && typeof window.lucide.createIcons === 'function') {
+      window.lucide.createIcons();
+    }
+
+    window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
+
+    setTimeout(() => {
+      btn.innerHTML = `<i data-lucide="send"></i> Envoyer ma demande`;
+      btn.style.background = '';
+      if (window.lucide && typeof window.lucide.createIcons === 'function') {
+        window.lucide.createIcons();
+      }
+      this.reset();
+    }, 1800);
+  });
+</script>
+</body>
+</html>
