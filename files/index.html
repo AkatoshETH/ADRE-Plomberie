@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Action Dépannages plomberie recherche et réparation fuite d'eau Bordeaux Métropole</title>
+<meta name="description" content="Service de plomberie haut de gamme à Bordeaux. Intervention en 45 minutes. L'excellence technique au service de votre urgence.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg:#060b14;
+  --bg2:#0a1120;
+  --surface:rgba(255,255,255,0.04);
+  --surface-hover:rgba(255,255,255,0.07);
+  --border:rgba(255,255,255,0.08);
+  --border-bright:rgba(255,255,255,0.14);
+  --blue:#2563eb;
+  --blue-bright:#3b82f6;
+  --blue-glow:rgba(59,130,246,0.35);
+  --cyan:#06b6d4;
+  --text:#f0f4ff;
+  --text-muted:rgba(240,244,255,0.5);
+  --text-dim:rgba(240,244,255,0.25);
+  --radius:28px;
+  --radius-sm:16px;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',system-ui,sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  overflow-x:hidden;
+  line-height:1.6;
+}
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events:none;z-index:0;opacity:.4;
+}
+.orb{position:fixed;border-radius:50%;filter:blur(100px);pointer-events:none;z-index:0}
+.orb-1{width:600px;height:600px;background:radial-gradient(circle,rgba(37,99,235,0.18) 0%,transparent 70%);top:-200px;left:-100px}
+.orb-2{width:500px;height:500px;background:radial-gradient(circle,rgba(6,182,212,0.12) 0%,transparent 70%);bottom:-100px;right:-100px}
+.orb-3{width:400px;height:400px;background:radial-gradient(circle,rgba(99,102,241,0.1) 0%,transparent 70%);top:50%;left:50%;transform:translate(-50%,-50%)}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:0 2rem}
+.nav-pill{
+  max-width:1100px;margin:1rem auto 0;
+  background:rgba(6,11,20,0.7);
+  backdrop-filter:blur(20px);
+  border:1px solid var(--border-bright);
+  border-radius:100px;height:60px;
+  display:flex;align-items:center;justify-content:space-between;padding:0 1.5rem;
+}
+.logo{font-size:1.1rem;font-weight:800;letter-spacing:-.5px;background:linear-gradient(135deg,#fff 0%,rgba(255,255,255,.6) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.logo sup{font-size:.55rem;font-weight:500;letter-spacing:.5px;color:var(--cyan);-webkit-text-fill-color:var(--cyan);vertical-align:super;margin-left:2px}
+.nav-links{display:flex;align-items:center;gap:2rem}
+.nav-links a{color:var(--text-muted);text-decoration:none;font-size:.85rem;font-weight:500;transition:.2s}
+.nav-links a:hover{color:var(--text)}
+.nav-cta{background:var(--blue);color:#fff !important;padding:.5rem 1.3rem;border-radius:100px;font-size:.85rem !important;font-weight:600 !important;transition:.2s !important;box-shadow:0 0 20px var(--blue-glow)}
+.nav-cta:hover{background:#1d4ed8 !important;box-shadow:0 0 32px rgba(59,130,246,0.5) !important}
+.hero{min-height:100vh;display:flex;align-items:center;padding:0 2rem;position:relative;overflow:hidden}
+.hero-inner{max-width:1100px;margin:auto;padding:8rem 0 4rem;position:relative;z-index:1}
+.hero-eyebrow{
+  display:inline-flex;align-items:center;gap:.6rem;
+  background:rgba(59,130,246,0.1);border:1px solid rgba(59,130,246,0.25);
+  color:var(--blue-bright);padding:.4rem 1rem;border-radius:100px;
+  font-size:.78rem;font-weight:600;letter-spacing:.8px;text-transform:uppercase;
+  margin-bottom:2rem;opacity:0;
+}
+.hero-eyebrow-dot{width:6px;height:6px;background:var(--cyan);border-radius:50%;box-shadow:0 0 8px var(--cyan);animation:glow-pulse 2s ease-in-out infinite}
+@keyframes glow-pulse{0%,100%{box-shadow:0 0 6px var(--cyan),0 0 12px var(--cyan)}50%{box-shadow:0 0 12px var(--cyan),0 0 24px var(--cyan),0 0 40px rgba(6,182,212,.4)}}
+.hero-title{font-size:clamp(3rem,7vw,6rem);font-weight:900;line-height:1.02;letter-spacing:-2.5px;margin-bottom:1.5rem;opacity:0;position:relative}
+.hero-title .line-1{display:block;color:var(--text)}
+.hero-title .line-2{display:block;background:linear-gradient(135deg,var(--blue-bright) 0%,var(--cyan) 60%,#818cf8 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;position:relative}
+.hero-title .line-2::after{content:attr(data-text);position:absolute;left:0;top:0;background:linear-gradient(135deg,var(--blue-bright),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;filter:blur(20px);opacity:.6;z-index:-1}
+.hero-glow{position:absolute;width:700px;height:200px;background:radial-gradient(ellipse,rgba(59,130,246,0.2) 0%,transparent 70%);top:50%;left:-5%;transform:translateY(-50%);filter:blur(40px);pointer-events:none}
+.hero-sub{font-size:1.2rem;font-weight:300;color:var(--text-muted);max-width:560px;line-height:1.8;margin-bottom:2.5rem;opacity:0}
+.hero-sub strong{color:var(--text);font-weight:500}
+.hero-actions{display:flex;gap:1rem;align-items:center;opacity:0;flex-wrap:wrap}
+.btn-glow{background:var(--blue);color:#fff;padding:.9rem 2.2rem;border-radius:100px;text-decoration:none;font-weight:700;font-size:.95rem;transition:.3s;position:relative;overflow:hidden;box-shadow:0 0 0 1px rgba(59,130,246,.4),0 4px 30px var(--blue-glow);display:inline-flex;align-items:center;gap:.6rem}
+.btn-glow::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,.15),transparent);opacity:0;transition:.3s}
+.btn-glow:hover::before{opacity:1}
+.btn-glow:hover{transform:translateY(-2px);box-shadow:0 0 0 1px rgba(59,130,246,.6),0 8px 40px rgba(59,130,246,.5)}
+.btn-ghost{color:var(--text-muted);text-decoration:none;font-size:.9rem;font-weight:500;display:flex;align-items:center;gap:.5rem;transition:.2s}
+.btn-ghost:hover{color:var(--text)}
+.btn-ghost svg{transition:.3s}
+.btn-ghost:hover svg{transform:translateX(3px)}
+.hero-stats{display:flex;gap:3rem;margin-top:4rem;padding-top:3rem;border-top:1px solid var(--border);opacity:0;flex-wrap:wrap}
+.hero-stat-num{font-size:2.2rem;font-weight:800;letter-spacing:-1px}
+.hero-stat-label{font-size:.8rem;color:var(--text-muted);font-weight:400;margin-top:.2rem}
+.trust-strip{padding:1.2rem 2rem;border-top:1px solid var(--border);border-bottom:1px solid var(--border);position:relative;z-index:1;overflow:hidden}
+.trust-track{display:flex;gap:3rem;align-items:center;animation:scroll-trust 20s linear infinite;width:max-content}
+@keyframes scroll-trust{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.trust-item{display:flex;align-items:center;gap:.7rem;white-space:nowrap;color:var(--text-muted);font-size:.82rem;font-weight:500}
+.trust-item span{color:var(--text);font-weight:600}
+.trust-dot{width:4px;height:4px;background:var(--border-bright);border-radius:50%}
+.section{padding:6rem 2rem;position:relative;z-index:1}
+.section-inner{max-width:1100px;margin:auto}
+.eyebrow{font-size:.72rem;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;color:var(--blue-bright);margin-bottom:.8rem}
+.section-h2{font-size:clamp(2rem,4vw,3rem);font-weight:800;letter-spacing:-1.5px;line-height:1.1;margin-bottom:1rem}
+.section-h2 em{font-style:normal;background:linear-gradient(135deg,var(--blue-bright),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.section-lead{font-size:1.05rem;color:var(--text-muted);font-weight:300;line-height:1.8;max-width:520px}
+/* BENTO */
+.bento{display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:auto;gap:1rem;margin-top:3.5rem}
+.bento-cell{background:var(--surface);backdrop-filter:blur(15px);border:1px solid var(--border);border-radius:var(--radius);padding:2rem;transition:.4s cubic-bezier(.23,1,.32,1);position:relative;overflow:hidden;cursor:default}
+.bento-cell::before{content:'';position:absolute;inset:0;border-radius:inherit;background:linear-gradient(135deg,rgba(255,255,255,.04) 0%,transparent 60%);pointer-events:none}
+.bento-cell:hover{background:var(--surface-hover);border-color:var(--border-bright);transform:translateY(-3px);box-shadow:0 20px 60px rgba(0,0,0,.4),0 0 0 1px var(--border-bright)}
+.b1{grid-column:span 7;grid-row:span 2;min-height:360px}
+.b2{grid-column:span 5;min-height:170px}
+.b3{grid-column:span 5;min-height:170px}
+.b4{grid-column:span 4;min-height:200px}
+.b5{grid-column:span 4;min-height:200px}
+.b6{grid-column:span 4;min-height:200px}
+.b7{grid-column:span 12;min-height:140px;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap}
+.bento-tag{display:inline-flex;align-items:center;gap:.5rem;background:rgba(59,130,246,.12);border:1px solid rgba(59,130,246,.2);color:var(--blue-bright);padding:.3rem .8rem;border-radius:100px;font-size:.72rem;font-weight:700;letter-spacing:.5px;text-transform:uppercase;margin-bottom:1.2rem}
+.bento-title{font-size:1.4rem;font-weight:700;letter-spacing:-.5px;margin-bottom:.6rem;line-height:1.2}
+.bento-desc{font-size:.88rem;color:var(--text-muted);line-height:1.7;font-weight:300}
+.bento-icon{width:52px;height:52px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:1.2rem;background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.15)}
+.b1 .bento-title{font-size:2rem;font-weight:800;letter-spacing:-1px;line-height:1.15}
+.bento-highlight{position:absolute;bottom:1.5rem;right:1.5rem;font-size:3.5rem;font-weight:900;letter-spacing:-2px;background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(255,255,255,.02));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.bento-badge{display:inline-flex;align-items:center;gap:.4rem;background:rgba(16,185,129,.12);border:1px solid rgba(16,185,129,.2);color:#34d399;padding:.35rem .9rem;border-radius:100px;font-size:.78rem;font-weight:600;margin-top:1rem}
+.bento-big-stat{font-size:4rem;font-weight:900;letter-spacing:-3px;background:linear-gradient(135deg,var(--text) 30%,var(--text-muted));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1}
+.bento-big-sub{font-size:.82rem;color:var(--text-muted);margin-top:.3rem;font-weight:400}
+.bento-divider{width:1px;height:60px;background:var(--border);flex-shrink:0}
+.b7-item{text-align:center;flex:1;min-width:120px}
+.b7-num{font-size:1.8rem;font-weight:800;letter-spacing:-1px}
+.b7-label{font-size:.75rem;color:var(--text-muted);margin-top:.2rem}
+.bento-cell.accent-cyan{background:linear-gradient(135deg,rgba(6,182,212,.1),rgba(6,182,212,.04));border-color:rgba(6,182,212,.2)}
+.bento-cell.accent-cyan .bento-icon{background:rgba(6,182,212,.12);border-color:rgba(6,182,212,.2)}
+.bento-cell.accent-blue{background:linear-gradient(135deg,rgba(59,130,246,.12),rgba(59,130,246,.04));border-color:rgba(59,130,246,.25)}
+/* MARQUEE */
+.marquee-line{overflow:hidden;border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:.7rem 0}
+.marquee-track{display:flex;gap:2.5rem;animation:marquee 25s linear infinite;width:max-content}
+@keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+.marquee-item{font-size:.75rem;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;color:var(--text-dim);white-space:nowrap;display:flex;align-items:center;gap:.8rem}
+.marquee-item::after{content:'·';color:var(--text-dim)}
+/* REVIEWS */
+.reviews-scroll{display:flex;gap:1.2rem;margin-top:3rem;overflow-x:auto;padding-bottom:1rem;scrollbar-width:none}
+.reviews-scroll::-webkit-scrollbar{display:none}
+.review-card{flex-shrink:0;width:360px;background:var(--surface);backdrop-filter:blur(15px);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1.8rem;transition:.3s}
+.review-card:hover{border-color:var(--border-bright);background:var(--surface-hover)}
+.stars{color:#f59e0b;font-size:.85rem;letter-spacing:3px;margin-bottom:1rem}
+.review-text{font-size:.92rem;color:var(--text-muted);line-height:1.75;font-weight:300;margin-bottom:1.5rem;font-style:italic}
+.reviewer{display:flex;align-items:center;gap:.9rem}
+.avatar{width:38px;height:38px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:.82rem;flex-shrink:0;border:1px solid var(--border-bright)}
+.rev-name{font-weight:600;font-size:.88rem}
+.rev-meta{font-size:.75rem;color:var(--text-dim);margin-top:.1rem}
+.rating-block{display:flex;align-items:center;gap:1rem;background:rgba(245,158,11,.06);border:1px solid rgba(245,158,11,.15);border-radius:var(--radius-sm);padding:1.2rem 1.8rem;margin-bottom:2.5rem;width:fit-content}
+.rating-big{font-size:3rem;font-weight:900;letter-spacing:-2px;line-height:1}
+.rating-stars-col{display:flex;flex-direction:column;gap:.3rem}
+.rating-count{font-size:.78rem;color:var(--text-muted)}
+/* WHY */
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:3.5rem}
+.why-left{background:linear-gradient(135deg,rgba(37,99,235,.15),rgba(6,182,212,.08));border:1px solid rgba(59,130,246,.2);border-radius:var(--radius);padding:3rem;display:flex;flex-direction:column;justify-content:space-between}
+.why-right{display:flex;flex-direction:column;gap:1rem}
+.why-card{background:var(--surface);backdrop-filter:blur(15px);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1.5rem 1.8rem;transition:.3s;display:flex;align-items:flex-start;gap:1.2rem}
+.why-card:hover{border-color:var(--border-bright);background:var(--surface-hover)}
+.why-icon{width:40px;height:40px;border-radius:10px;background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.15);display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.why-card-title{font-weight:700;font-size:.95rem;margin-bottom:.3rem}
+.why-card-desc{font-size:.83rem;color:var(--text-muted);line-height:1.6;font-weight:300}
+.why-left-quote{font-size:1.6rem;font-weight:800;letter-spacing:-1px;line-height:1.3;margin-bottom:2rem}
+.why-left-quote em{font-style:normal;background:linear-gradient(135deg,var(--blue-bright),var(--cyan));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.why-left-cta{display:inline-flex;align-items:center;gap:.6rem;color:var(--blue-bright);font-weight:600;font-size:.9rem;text-decoration:none;transition:.2s}
+.why-left-cta:hover{gap:1rem}
+/* URGENCY */
+.urgency{padding:5rem 2rem;position:relative;z-index:1}
+.urgency-card{max-width:1100px;margin:auto;background:linear-gradient(135deg,rgba(220,38,38,.12),rgba(239,68,68,.06));border:1px solid rgba(239,68,68,.2);border-radius:var(--radius);padding:4rem;text-align:center;position:relative;overflow:hidden}
+.urgency-card::before{content:'';position:absolute;inset:0;border-radius:inherit;background:radial-gradient(ellipse 80% 60% at 50% 100%,rgba(239,68,68,.1),transparent);pointer-events:none}
+.urgency-label{display:inline-flex;align-items:center;gap:.5rem;background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.2);color:#fca5a5;padding:.35rem 1rem;border-radius:100px;font-size:.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:1.5rem}
+.urgency-title{font-size:clamp(1.8rem,4vw,3.2rem);font-weight:900;letter-spacing:-1.5px;line-height:1.1;margin-bottom:1rem}
+.urgency-sub{color:var(--text-muted);font-size:1.05rem;font-weight:300;line-height:1.7;margin-bottom:2.5rem;max-width:500px;margin-left:auto;margin-right:auto}
+.phone-btn{display:inline-flex;align-items:center;gap:.8rem;background:rgba(239,68,68,.15);border:1.5px solid rgba(239,68,68,.4);color:var(--text);padding:1.1rem 2.5rem;border-radius:100px;font-size:1.6rem;font-weight:800;letter-spacing:.5px;text-decoration:none;transition:.3s;box-shadow:0 0 40px rgba(239,68,68,.15)}
+.phone-btn:hover{background:rgba(239,68,68,.25);border-color:rgba(239,68,68,.6);transform:scale(1.02);box-shadow:0 0 60px rgba(239,68,68,.25)}
+.urgency-note{font-size:.8rem;color:var(--text-dim);margin-top:1rem}
+/* FAQ */
+.faq-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-top:3rem}
+.faq-item{background:var(--surface);backdrop-filter:blur(15px);border:1px solid var(--border);border-radius:var(--radius-sm);overflow:hidden;transition:.3s}
+.faq-item.open,.faq-item:hover{border-color:var(--border-bright)}
+.faq-q{width:100%;padding:1.4rem 1.6rem;background:none;border:none;text-align:left;color:var(--text);font-size:.9rem;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:1rem;transition:.2s}
+.faq-q:hover{color:var(--blue-bright)}
+.faq-chevron{width:20px;height:20px;border-radius:50%;background:var(--surface-hover);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0;transition:.3s;font-size:.7rem}
+.faq-item.open .faq-chevron{transform:rotate(180deg);background:rgba(59,130,246,.15);border-color:rgba(59,130,246,.3)}
+.faq-body{max-height:0;overflow:hidden;transition:.35s ease}
+.faq-body p{padding:0 1.6rem 1.4rem;font-size:.85rem;color:var(--text-muted);line-height:1.75;font-weight:300}
+.faq-item.open .faq-body{max-height:200px}
+/* CONTACT */
+.contact-grid{display:grid;grid-template-columns:5fr 7fr;gap:1rem;margin-top:3.5rem}
+.contact-left{display:flex;flex-direction:column;gap:1rem}
+.contact-info-card{background:var(--surface);backdrop-filter:blur(15px);border:1px solid var(--border);border-radius:var(--radius-sm);padding:1.5rem 1.8rem;display:flex;gap:1rem;align-items:flex-start;transition:.3s}
+.contact-info-card:hover{border-color:var(--border-bright)}
+.ci-dot{width:36px;height:36px;border-radius:10px;flex-shrink:0;background:rgba(59,130,246,.1);border:1px solid rgba(59,130,246,.15);display:flex;align-items:center;justify-content:center;font-size:.95rem}
+.ci-label{font-size:.72rem;font-weight:700;letter-spacing:.8px;text-transform:uppercase;color:var(--text-dim);margin-bottom:.2rem}
+.ci-value{font-size:.9rem;font-weight:500;line-height:1.4}
+.ci-sub{font-size:.78rem;color:var(--text-muted);margin-top:.1rem}
+.contact-map{flex:1;border-radius:var(--radius-sm);background:linear-gradient(135deg,rgba(59,130,246,.08),rgba(6,182,212,.04));border:1px solid var(--border);min-height:120px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.5rem;font-size:.82rem;color:var(--text-muted);padding:1.5rem}
+.contact-form-card{background:var(--surface);backdrop-filter:blur(20px);border:1px solid var(--border-bright);border-radius:var(--radius);padding:2.5rem}
+.form-title{font-size:1.2rem;font-weight:700;letter-spacing:-.5px;margin-bottom:.4rem}
+.form-sub{font-size:.82rem;color:var(--text-muted);margin-bottom:2rem;font-weight:300}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+.fg{margin-bottom:.9rem}
+.fg label{display:block;font-size:.72rem;font-weight:600;letter-spacing:.5px;text-transform:uppercase;color:var(--text-dim);margin-bottom:.5rem}
+.fg input,.fg select,.fg textarea{width:100%;padding:.8rem 1rem;background:rgba(255,255,255,.04);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:'Inter',sans-serif;font-size:.88rem;font-weight:400;transition:.2s;outline:none}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:rgba(59,130,246,.5);background:rgba(59,130,246,.06);box-shadow:0 0 0 3px rgba(59,130,246,.1)}
+.fg select option{background:#0a1120}
+.fg textarea{resize:vertical;min-height:90px}
+.form-btn{width:100%;background:var(--blue);color:#fff;padding:.9rem;border:none;border-radius:100px;font-size:.95rem;font-weight:700;font-family:'Inter',sans-serif;cursor:pointer;transition:.3s;box-shadow:0 4px 24px var(--blue-glow);margin-top:.4rem}
+.form-btn:hover{background:#1d4ed8;transform:translateY(-1px);box-shadow:0 8px 32px rgba(59,130,246,.45)}
+.form-btn:active{transform:translateY(0)}
+.form-legal{font-size:.72rem;color:var(--text-dim);text-align:center;margin-top:.8rem;line-height:1.5}
+footer{padding:3rem 2rem 2rem;border-top:1px solid var(--border);position:relative;z-index:1}
+.footer-inner{max-width:1100px;margin:auto}
+.footer-top{display:flex;justify-content:space-between;align-items:flex-start;gap:2rem;flex-wrap:wrap;margin-bottom:2.5rem}
+.footer-tagline{font-size:.82rem;color:var(--text-muted);margin-top:.4rem;font-weight:300;max-width:260px;line-height:1.6}
+.footer-nav{display:flex;gap:4rem;flex-wrap:wrap}
+.footer-col-title{font-size:.72rem;font-weight:700;letter-spacing:1px;text-transform:uppercase;color:var(--text-dim);margin-bottom:.8rem}
+.footer-col ul{list-style:none;display:flex;flex-direction:column;gap:.5rem}
+.footer-col a{color:var(--text-muted);text-decoration:none;font-size:.83rem;transition:.2s}
+.footer-col a:hover{color:var(--text)}
+.footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;padding-top:1.5rem;border-top:1px solid var(--border)}
+.footer-copy{font-size:.75rem;color:var(--text-dim)}
+.footer-legal{display:flex;gap:1.5rem}
+.footer-legal a{font-size:.75rem;color:var(--text-dim);text-decoration:none;transition:.2s}
+.footer-legal a:hover{color:var(--text-muted)}
+.reveal{opacity:0;transform:translateY(30px)}
+.reveal-left{opacity:0;transform:translateX(-30px)}
+.reveal-right{opacity:0;transform:translateX(30px)}
+@media(max-width:900px){
+  .b1{grid-column:span 12}.b2,.b3{grid-column:span 6}.b4,.b5,.b6{grid-column:span 12}.b7{grid-column:span 12}
+  .why-grid{grid-template-columns:1fr}.faq-grid{grid-template-columns:1fr}.contact-grid{grid-template-columns:1fr}
+  .hero-title{font-size:clamp(2.5rem,8vw,4rem)}.nav-links{display:none}
+}
+@media(max-width:600px){
+  .b2,.b3{grid-column:span 12}.form-row{grid-template-columns:1fr}.nav-pill{padding:0 1rem}
+}
+</style>
+</head>
+<body>
+<div class="orb orb-1"></div>
+<div class="orb orb-2"></div>
+<div class="orb orb-3"></div>
+
+<nav>
+  <div class="nav-pill">
+    <div class="logo">ADR<sup>Action Dépannage Réparation</sup></div>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#avis">Avis</a>
+      <a href="#faq">FAQ</a>
+      <a href="#contact" class="nav-cta">Devis gratuit</a>
+    </div>
+    <a href="tel:0556370037" class="nav-cta" style="display:flex;align-items:center;gap:.4rem">
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a2 2 0 012-2.18H8.1A2 2 0 0110 9.45a12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L9.09 15.5a16 16 0 006.29 6.29l1.13-1.16a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+      05 56 37 00 37
+    </a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-eyebrow" id="hero-eyebrow">
+      <span class="hero-eyebrow-dot"></span>
+      Intervention disponible aujourd'hui
+    </div>
+    <h1 class="hero-title" id="hero-title">
+      <span class="line-1">L'excellence technique</span>
+      <span class="line-2" data-text="au service de votre urgence.">au service de votre urgence.</span>
+    </h1>
+    <p class="hero-sub" id="hero-sub">
+      Zéro stress. <strong>100% de transparence.</strong><br>
+      Votre plombier de confiance à Bordeaux intervient en moins de 45 minutes, 6 jours sur 7.
+    </p>
+    <div class="hero-actions" id="hero-actions">
+      <a href="tel:0556370037" class="btn-glow">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81a2 2 0 012-2.18H8.1A2 2 0 0110 9.45a12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L9.09 15.5a16 16 0 006.29 6.29l1.13-1.16a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"/></svg>
+        Appeler maintenant
+      </a>
+      <a href="#contact" class="btn-ghost">
+        Demander un devis
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+    <div class="hero-stats" id="hero-stats">
+      <div>
+        <div class="hero-stat-num" id="stat-0">45<span style="font-size:1.4rem;color:var(--text-muted)"> min</span></div>
+        <div class="hero-stat-label">Délai d'intervention moyen</div>
+      </div>
+      <div style="width:1px;background:var(--border);flex-shrink:0"></div>
+      <div>
+        <div class="hero-stat-num" id="stat-1">1 850<span style="font-size:1.4rem;color:var(--text-muted)">+</span></div>
+        <div class="hero-stat-label">Interventions réalisées</div>
+      </div>
+      <div style="width:1px;background:var(--border);flex-shrink:0"></div>
+      <div>
+        <div class="hero-stat-num" id="stat-2">4.9<span style="font-size:1.4rem;color:var(--text-muted)">/5</span></div>
+        <div class="hero-stat-label">Note Google · 312 avis</div>
+      </div>
+      <div style="width:1px;background:var(--border);flex-shrink:0"></div>
+      <div>
+        <div class="hero-stat-num" id="stat-3">2 ans</div>
+        <div class="hero-stat-label">Garantie sur tous travaux</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="trust-strip">
+  <div class="trust-track">
+    <div class="trust-item"><span>Artisan RGE Certifié</span></div><div class="trust-dot"></div>
+    <div class="trust-item"><span>Assurance décennale</span></div><div class="trust-dot"></div>
+    <div class="trust-item"><span>Devis gratuit sous 2h</span></div><div class="trust-dot"></div>
+    <div class="trust-item"><span>Bordeaux & 50 km</span></div><div class="trust-dot"></div>
+    <div class="trust-item"><span>Lundi — Samedi · 8h–20h</span></div><div class="trust-dot"></div>
+    <div class="trust-item"><span>Tarifs transparents</span></div><div class="trust-dot"></div>
+    <div class="trust-item"><span>Garantie 2 ans</span></div><div class="trust-dot"></div>
+    <div class="trust-item"><span>Artisan RGE Certifié</span></div><div class="trust-dot"></div>
+    <div class="trust-item"><span>Assurance décennale</span></div><div class="trust-dot"></div>
+    <div class="trust-item"><span>Devis gratuit sous 2h</span></div><div class="trust-dot"></div>
+    <div class="trust-item"><span>Bordeaux & 50 km</span></div><div class="trust-dot"></div>
+    <div class="trust-item"><span>Lundi — Samedi · 8h–20h</span></div><div class="trust-dot"></div>
+    <div class="trust-item"><span>Tarifs transparents</span></div><div class="trust-dot"></div>
+    <div class="trust-item"><span>Garantie 2 ans</span></div><div class="trust-dot"></div>
+  </div>
+</div>
+
+<section class="section" id="services">
+  <div class="section-inner">
+    <div class="eyebrow reveal">Nos prestations</div>
+    <h2 class="section-h2 reveal">Un seul interlocuteur.<br><em>Toutes les solutions.</em></h2>
+    <div class="bento">
+      <div class="bento-cell b1 accent-blue reveal">
+        <div class="bento-tag">⚡ Urgence 6j/7</div>
+        <div class="bento-title">Dépannage &<br>urgence plomberie</div>
+        <div class="bento-desc" style="margin-top:.8rem;max-width:380px">Fuite d'eau, rupture de canalisation, robinet cassé — nous stoppons les dégâts avant qu'ils ne s'aggravent. Réponse immédiate, intervention garantie.</div>
+        <div class="bento-badge">
+          <span style="width:6px;height:6px;background:#34d399;border-radius:50%;box-shadow:0 0 8px #34d399"></span>
+          Disponible maintenant
+        </div>
+        <div class="bento-highlight">45'</div>
+      </div>
+      <div class="bento-cell b2 reveal">
+        <div class="bento-icon">🔧</div>
+        <div class="bento-title">Débouchage</div>
+        <div class="bento-desc">WC, siphon, colonne. Furet haute pression ou caméra d'inspection selon la profondeur.</div>
+      </div>
+      <div class="bento-cell b3 accent-cyan reveal">
+        <div class="bento-icon" style="background:rgba(6,182,212,.12);border-color:rgba(6,182,212,.2)">🔥</div>
+        <div class="bento-title">Chauffe-eau & ballon</div>
+        <div class="bento-desc">Installation, remplacement ou dépannage. Thermodynamique, solaire, électrique — toutes marques.</div>
+      </div>
+      <div class="bento-cell b4 reveal">
+        <div class="bento-big-stat">98%</div>
+        <div class="bento-big-sub">de clients satisfaits<br>sur les 12 derniers mois</div>
+      </div>
+      <div class="bento-cell b5 reveal">
+        <div class="bento-icon">🚿</div>
+        <div class="bento-title">Rénovation salle de bain</div>
+        <div class="bento-desc">Conception, dépose, pose complète. Résultat clé en main en 5 jours.</div>
+      </div>
+      <div class="bento-cell b6 reveal">
+        <div class="bento-icon">💧</div>
+        <div class="bento-title">Détection de fuites</div>
+        <div class="bento-desc">Caméra thermique et électro-acoustique. Localisation sans destruction de mur.</div>
+      </div>
+      <div class="bento-cell b7 reveal">
+        <div class="b7-item"><div class="b7-num">12 ans</div><div class="b7-label">d'expérience locale</div></div>
+        <div class="bento-divider"></div>
+        <div class="b7-item"><div class="b7-num">50 km</div><div class="b7-label">de rayon d'intervention</div></div>
+        <div class="bento-divider"></div>
+        <div class="b7-item"><div class="b7-num">Lun–Sam</div><div class="b7-label">8h à 20h</div></div>
+        <div class="bento-divider"></div>
+        <div class="b7-item"><div class="b7-num">RGE</div><div class="b7-label">artisan certifié</div></div>
+        <div class="bento-divider"></div>
+        <div class="b7-item"><div class="b7-num">2 ans</div><div class="b7-label">de garantie travaux</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="marquee-line">
+  <div class="marquee-track">
+    <span class="marquee-item">Dépannage Urgence</span>
+    <span class="marquee-item">Débouchage Professionnel</span>
+    <span class="marquee-item">Chauffe-eau</span>
+    <span class="marquee-item">Salle de Bain</span>
+    <span class="marquee-item">Détection Fuite</span>
+    <span class="marquee-item">Rénovation Plomberie</span>
+    <span class="marquee-item">Artisan RGE</span>
+    <span class="marquee-item">Devis Gratuit</span>
+    <span class="marquee-item">Dépannage Urgence</span>
+    <span class="marquee-item">Débouchage Professionnel</span>
+    <span class="marquee-item">Chauffe-eau</span>
+    <span class="marquee-item">Salle de Bain</span>
+    <span class="marquee-item">Détection Fuite</span>
+    <span class="marquee-item">Rénovation Plomberie</span>
+    <span class="marquee-item">Artisan RGE</span>
+    <span class="marquee-item">Devis Gratuit</span>
+  </div>
+</div>
+
+<section class="section" id="avis">
+  <div class="section-inner">
+    <div class="eyebrow reveal">Avis clients</div>
+    <h2 class="section-h2 reveal">Ils nous ont fait confiance.<br><em>Ils reviennent.</em></h2>
+    <div class="rating-block reveal">
+      <div class="rating-big">4.9</div>
+      <div class="rating-stars-col">
+        <div style="color:#f59e0b;font-size:.9rem;letter-spacing:2px">★★★★★</div>
+        <div class="rating-count">Basé sur 312 avis Google vérifiés</div>
+      </div>
+    </div>
+    <div class="reviews-scroll" id="reviews-scroll">
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Une intervention d'une précision remarquable. Fuite identifiée en 10 minutes, réparée en 45. Aucune trace laissée, facture exactement conforme au devis. Rare."</p>
+        <div class="reviewer"><div class="avatar" style="background:rgba(59,130,246,.15);color:#60a5fa">ML</div><div><div class="rev-name">Marie L.</div><div class="rev-meta">Bordeaux · Il y a 2 semaines</div></div></div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Mon chauffe-eau a lâché un vendredi soir. Ils étaient là le samedi à 9h. Remplacement complet, mise en service, explication des garanties. Service digne d'un grand hôtel."</p>
+        <div class="reviewer"><div class="avatar" style="background:rgba(124,58,237,.15);color:#a78bfa">TC</div><div><div class="rev-name">Thomas C.</div><div class="rev-meta">Mérignac · Il y a 1 mois</div></div></div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Détection de fuite sans destruction. Caméra thermique, localisation en 20 minutes, réparation au centimètre près. Mes murs sont intacts. Impressionnant."</p>
+        <div class="reviewer"><div class="avatar" style="background:rgba(5,150,105,.15);color:#34d399">SF</div><div><div class="rev-name">Sophie F.</div><div class="rev-meta">Pessac · Il y a 3 semaines</div></div></div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Rénovation complète de notre salle de bain en 4 jours. Chaque étape documentée et expliquée. Le résultat dépasse ce qu'on espérait. On recommande les yeux fermés."</p>
+        <div class="reviewer"><div class="avatar" style="background:rgba(220,38,38,.15);color:#f87171">PD</div><div><div class="rev-name">Pierre D.</div><div class="rev-meta">Bordeaux · Il y a 2 mois</div></div></div>
+      </div>
+      <div class="review-card">
+        <div class="stars">★★★★★</div>
+        <p class="review-text">"Syndic de 45 lots — j'ai confié la mise aux normes à Aqua Prestige. Travail rigoureux, respect des délais, communication irréprochable. Mon prestataire de référence désormais."</p>
+        <div class="reviewer"><div class="avatar" style="background:rgba(8,145,178,.15);color:#22d3ee">JB</div><div><div class="rev-name">Jean-Michel B.</div><div class="rev-meta">Talence · Il y a 1 mois</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="section-inner">
+    <div class="eyebrow reveal">Notre philosophie</div>
+    <h2 class="section-h2 reveal">Pas juste un plombier.<br><em>Un partenaire de confiance.</em></h2>
+    <div class="why-grid">
+      <div class="why-left reveal-left">
+        <div>
+          <div class="why-left-quote">"L'urgence ne justifie pas<br>les <em>prix opaques</em>.<br>Jamais."</div>
+          <p style="font-size:.88rem;color:var(--text-muted);line-height:1.8;font-weight:300">Chez Aqua Prestige, chaque intervention commence par un devis clair. Vous savez ce que vous payez avant que nous sortions le moindre outil. C'est une promesse, pas une intention.</p>
+        </div>
+        <a href="#contact" class="why-left-cta">
+          Demander un devis gratuit
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+      <div class="why-right">
+        <div class="why-card reveal-right">
+          <div class="why-icon">⚡</div>
+          <div><div class="why-card-title">45 minutes, pas une de plus</div><div class="why-card-desc">Notre engagement sur le délai d'intervention. Sur Bordeaux intramuros, nous visons systématiquement moins de 45 minutes dès réception de votre appel.</div></div>
+        </div>
+        <div class="why-card reveal-right">
+          <div class="why-icon">🛡️</div>
+          <div><div class="why-card-title">Garantie 2 ans, sans condition</div><div class="why-card-desc">Chaque intervention est couverte 24 mois. Un problème après notre passage ? Nous revenons sans frais, sans discussion, sans délai.</div></div>
+        </div>
+        <div class="why-card reveal-right">
+          <div class="why-icon">🎓</div>
+          <div><div class="why-card-title">Certification RGE & assurance décennale</div><div class="why-card-desc">Toutes nos qualifications sont à jour. Vous pouvez demander nos justificatifs à tout moment — la transparence est notre standard, pas notre exception.</div></div>
+        </div>
+        <div class="why-card reveal-right">
+          <div class="why-icon">💬</div>
+          <div><div class="why-card-title">Communication en temps réel</div><div class="why-card-desc">Confirmation de créneau par SMS, notification d'arrivée, compte-rendu d'intervention écrit. Vous ne cherchez jamais à savoir où nous en sommes.</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="urgency">
+  <div class="urgency-card reveal">
+    <div class="urgency-label">🚨 Urgence active</div>
+    <h2 class="urgency-title">Une fuite qui s'aggrave<br>à chaque minute.</h2>
+    <p class="urgency-sub">Chaque minute compte. Ne laissez pas l'eau décider pour vous. Nos techniciens sont disponibles maintenant, de 8h à 20h.</p>
+    <a href="tel:0556370037"phone-btn">📞 05 56 37 00 37</a>
+    <div class="urgency-note">Lundi – Samedi · 8h à 20h · Réponse en moins de 2 minutes</div>
+  </div>
+</div>
+
+<section class="section" id="faq">
+  <div class="section-inner">
+    <div class="eyebrow reveal">Questions fréquentes</div>
+    <h2 class="section-h2 reveal">Transparence totale.<br><em>Zéro mauvaise surprise.</em></h2>
+    <div class="faq-grid">
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Quel est le coût d'un déplacement ?<span class="faq-chevron">▾</span></button>
+        <div class="faq-body"><p>Le déplacement est inclus dans notre forfait de base sur Bordeaux et la CUB. Le coût total vous est communiqué par téléphone avant intervention — vous validez ou non. Aucune facturation surprise.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Intervenez-vous le samedi ?<span class="faq-chevron">▾</span></button>
+        <div class="faq-body"><p>Oui, du lundi au samedi de 8h à 20h, aux mêmes tarifs que la semaine pour les interventions standards. Les urgences du dimanche sont gérées via un numéro dédié avec légère majoration.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Comment fonctionne la garantie 2 ans ?<span class="faq-chevron">▾</span></button>
+        <div class="faq-body"><p>Toute intervention est couverte 24 mois sur la main d'œuvre. En cas de récidive liée à notre travail, nous revenons gratuitement — sans justification exigée de votre part. C'est notre engagement écrit.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Pouvez-vous m'aider pour mon assurance ?<span class="faq-chevron">▾</span></button>
+        <div class="faq-body"><p>Absolument. Nous émettons un rapport d'intervention détaillé avec photos horodatées, estimatif de dommages et devis de remise en état — tous les documents nécessaires à votre déclaration de sinistre.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Quelle est votre zone d'intervention ?<span class="faq-chevron">▾</span></button>
+        <div class="faq-body"><p>Bordeaux et un rayon de 50 km : Mérignac, Pessac, Talence, Le Bouscat, Bègles, Villenave d'Ornon, Cenon, Floirac, Lormont, Bruges, Eysines. Hors zone sur devis spécifique.</p></div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q" onclick="toggleFaq(this)">Acceptez-vous tous les modes de paiement ?<span class="faq-chevron">▾</span></button>
+        <div class="faq-body"><p>Oui — espèces, chèque, carte bancaire, virement. Pour les rénovations, un échelonnement en 3 fois est possible sans frais pour les devis supérieurs à 1 500 €.</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="contact">
+  <div class="section-inner">
+    <div class="eyebrow reveal">Contact</div>
+    <h2 class="section-h2 reveal">Votre projet mérite<br><em>une réponse rapide.</em></h2>
+    <div class="contact-grid">
+      <div class="contact-left reveal-left">
+        <div class="contact-info-card">
+          <div class="ci-dot">📞</div>
+          <div><div class="ci-label">Téléphone direct</div><div class="ci-value">05 56 00 00 00</div><div class="ci-sub">Lun–Sam · 8h–20h · Réponse immédiate</div></div>
+        </div>
+        <div class="contact-info-card">
+          <div class="ci-dot">📧</div>
+          <div><div class="ci-label">Email</div><div class="ci-value">contact@aquaprestige-bordeaux.fr</div><div class="ci-sub">Réponse garantie sous 2h en semaine</div></div>
+        </div>
+        <div class="contact-info-card">
+          <div class="ci-dot">📍</div>
+          <div><div class="ci-label">Zone d'intervention</div><div class="ci-value">Bordeaux & Gironde</div><div class="ci-sub">50 km de rayon · Intervention le jour même</div></div>
+        </div>
+        <div class="contact-info-card">
+          <div class="ci-dot">🕐</div>
+          <div><div class="ci-label">Horaires</div><div class="ci-value">Lundi – Samedi</div><div class="ci-sub">8h à 20h · Urgences : numéro dédié</div></div>
+        </div>
+        <div class="contact-map">
+          <span style="font-size:1.5rem">🗺️</span>
+          <span>Carte d'intervention</span>
+          <span style="font-size:.72rem;color:var(--text-dim)"><iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5661.74713109578!2d-0.5767297878149795!3d44.80376527095017!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xd55270f912bb5fb%3A0x2c55329e613d59ab!2sAction%20D%C3%A9pannages%20plomberie%20recherche%20et%20r%C3%A9paration%20fuite%20d&#39;eau%20Bordeaux%20M%C3%A9tropole!5e0!3m2!1sfr!2sfr!4v1776589822865!5m2!1sfr!2sfr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe></span>
+        </div>
+      </div>
+      <div class="contact-form-card reveal-right">
+        <div class="form-title">Demande de devis gratuit</div>
+        <div class="form-sub">Réponse sous 2h — Sans engagement</div>
+        <div class="form-row">
+          <div class="fg"><label>Prénom</label><input type="text" placeholder="Jean"></div>
+          <div class="fg"><label>Nom</label><input type="text" placeholder="Dupont"></div>
+        </div>
+        <div class="fg"><label>Téléphone *</label><input type="tel" placeholder="06 12 34 56 78"></div>
+        <div class="fg"><label>Email</label><input type="email" placeholder="jean.dupont@email.com"></div>
+        <div class="fg"><label>Type d'intervention *</label>
+          <select>
+            <option value="">— Sélectionnez une prestation —</option>
+            <option>Dépannage urgence</option>
+            <option>Débouchage canalisation</option>
+            <option>Chauffe-eau / Ballon</option>
+            <option>Rénovation salle de bain</option>
+            <option>Détection de fuite</option>
+            <option>Rénovation plomberie</option>
+            <option>Autre</option>
+          </select>
+        </div>
+        <div class="fg"><label>Description</label><textarea placeholder="Décrivez brièvement votre situation..."></textarea></div>
+        <button class="form-btn" onclick="submitForm(this)">Envoyer ma demande →</button>
+        <div class="form-legal">Devis 100% gratuit · Réponse sous 2h · Aucun engagement · Données confidentielles</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="logo" style="font-size:1.2rem">Aqua<sup style="font-size:.55rem;color:var(--cyan);vertical-align:super">PRESTIGE</sup></div>
+        <div class="footer-tagline">L'excellence technique au service de votre urgence. Bordeaux & Gironde, depuis 2012.</div>
+      </div>
+      <div class="footer-nav">
+        <div class="footer-col">
+          <div class="footer-col-title">Services</div>
+          <ul>
+            <li><a href="#">Dépannage urgence</a></li>
+            <li><a href="#">Débouchage</a></li>
+            <li><a href="#">Chauffe-eau</a></li>
+            <li><a href="#">Salle de bain</a></li>
+            <li><a href="#">Détection fuite</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <div class="footer-col-title">Informations</div>
+          <ul>
+            <li><a href="#">Zone d'intervention</a></li>
+            <li><a href="#">Certifications</a></li>
+            <li><a href="#">Avis clients</a></li>
+            <li><a href="#">Contact</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 Aqua Prestige Bordeaux · SIRET 123 456 789 00010 · Assurance décennale</div>
+      <div class="footer-legal">
+        <a href="#">Mentions légales</a>
+        <a href="#">Confidentialité</a>
+        <a href="#">CGV</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+gsap.registerPlugin(ScrollTrigger);
+
+// HERO
+const heroTl = gsap.timeline({defaults:{ease:'power3.out'}});
+heroTl
+  .to('#hero-eyebrow',{opacity:1,y:0,duration:.7,delay:.3})
+  .to('#hero-title',  {opacity:1,y:0,duration:.9},'-=.3')
+  .to('#hero-sub',    {opacity:1,y:0,duration:.7},'-=.5')
+  .to('#hero-actions',{opacity:1,y:0,duration:.6},'-=.4')
+  .to('#hero-stats',  {opacity:1,y:0,duration:.7},'-=.3');
+
+// SCROLL REVEALS
+gsap.utils.toArray('.reveal').forEach((el,i)=>{
+  gsap.fromTo(el,{opacity:0,y:35},{opacity:1,y:0,duration:.8,ease:'power3.out',
+    scrollTrigger:{trigger:el,start:'top 88%',once:true},delay:(i%4)*0.07
+  });
+});
+gsap.utils.toArray('.reveal-left').forEach((el,i)=>{
+  gsap.fromTo(el,{opacity:0,x:-40},{opacity:1,x:0,duration:.9,ease:'power3.out',
+    scrollTrigger:{trigger:el,start:'top 85%',once:true},delay:i*0.1
+  });
+});
+gsap.utils.toArray('.reveal-right').forEach((el,i)=>{
+  gsap.fromTo(el,{opacity:0,x:40},{opacity:1,x:0,duration:.9,ease:'power3.out',
+    scrollTrigger:{trigger:el,start:'top 85%',once:true},delay:i*0.1
+  });
+});
+
+// BENTO STAGGER
+gsap.fromTo('.bento-cell',{opacity:0,y:40,scale:.97},{opacity:1,y:0,scale:1,duration:.7,ease:'power3.out',stagger:.08,
+  scrollTrigger:{trigger:'.bento',start:'top 80%',once:true}
+});
+
+// REVIEWS STAGGER
+gsap.fromTo('.review-card',{opacity:0,x:30},{opacity:1,x:0,duration:.6,ease:'power3.out',stagger:.1,
+  scrollTrigger:{trigger:'#reviews-scroll',start:'top 85%',once:true}
+});
+
+// WHY
+gsap.fromTo('.why-card',{opacity:0,x:30},{opacity:1,x:0,duration:.6,ease:'power3.out',stagger:.1,
+  scrollTrigger:{trigger:'.why-grid',start:'top 80%',once:true}
+});
+gsap.fromTo('.why-left',{opacity:0,x:-40},{opacity:1,x:0,duration:.8,ease:'power3.out',
+  scrollTrigger:{trigger:'.why-grid',start:'top 80%',once:true}
+});
+
+// FAQ
+gsap.fromTo('.faq-item',{opacity:0,y:20},{opacity:1,y:0,duration:.5,ease:'power3.out',stagger:.07,
+  scrollTrigger:{trigger:'.faq-grid',start:'top 85%',once:true}
+});
+
+// URGENCY PULSE
+gsap.to('.urgency-card',{
+  boxShadow:'0 0 80px rgba(239,68,68,.18), 0 0 0 1px rgba(239,68,68,.3)',
+  repeat:-1,yoyo:true,duration:2.5,ease:'sine.inOut'
+});
+
+// PARALLAX ORBS
+gsap.to('.orb-1',{y:-80,x:-40,scrollTrigger:{scrub:2,start:'top top',end:'bottom bottom'}});
+gsap.to('.orb-2',{y:60,x:40,scrollTrigger:{scrub:2,start:'top top',end:'bottom bottom'}});
+gsap.to('.orb-3',{y:-40,scrollTrigger:{scrub:1.5,start:'top top',end:'bottom bottom'}});
+
+// CONTACT INFO CARD STAGGER
+gsap.fromTo('.contact-info-card',{opacity:0,y:20},{opacity:1,y:0,duration:.5,ease:'power3.out',stagger:.1,
+  scrollTrigger:{trigger:'#contact',start:'top 80%',once:true}
+});
+
+// MAGNETIC BUTTONS
+document.querySelectorAll('.btn-glow,.form-btn,.phone-btn').forEach(btn=>{
+  btn.addEventListener('mousemove',e=>{
+    const r=btn.getBoundingClientRect();
+    const x=(e.clientX-r.left-r.width/2)*.1;
+    const y=(e.clientY-r.top-r.height/2)*.1;
+    gsap.to(btn,{x,y,duration:.3,ease:'power2.out'});
+  });
+  btn.addEventListener('mouseleave',()=>gsap.to(btn,{x:0,y:0,duration:.5,ease:'elastic.out(1,.5)'}));
+});
+
+function toggleFaq(btn){
+  const item=btn.parentElement;
+  const open=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+  if(!open)item.classList.add('open');
+}
+
+function submitForm(btn){
+  const orig=btn.textContent;
+  gsap.to(btn,{scale:.97,duration:.1,yoyo:true,repeat:1});
+  btn.textContent='✓ Demande envoyée avec succès';
+  btn.style.background='#059669';
+  btn.style.boxShadow='0 4px 24px rgba(5,150,105,.35)';
+  setTimeout(()=>{btn.textContent=orig;btn.style.background='';btn.style.boxShadow='';},4000);
+}
+</script>
+</body>
+</html>
